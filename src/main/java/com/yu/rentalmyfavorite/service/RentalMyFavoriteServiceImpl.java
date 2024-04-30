@@ -102,7 +102,7 @@
 //        @Override
 //        public int getPageTotal() {
 //            long total = dao.getPageTotal();
-////            // 計算Emp數量每頁3筆的話總共有幾頁
+////            // 計算Rental數量每頁3筆的話總共有幾頁
 //            int pageQty = (int)(total % PAGE_MAX_RESULT == 0 ? (total / PAGE_MAX_RESULT) : (total / PAGE_MAX_RESULT + 1));
 //            return pageQty;
 //        }

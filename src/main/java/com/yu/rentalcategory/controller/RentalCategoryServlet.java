@@ -88,14 +88,14 @@
 //            /***************************3.查詢完成,準備轉交(Send the Success view)*************/
 //            req.setAttribute("RentalCategory", RentalCategory); // 資料庫取出的RentalCategory物件,存入req
 //            req.setAttribute("getOne_For_Display", "true"); // 旗標getOne_For_Display見select_page.jsp的第125行 -->
-////				String url = "/rentalcategory/listOneRentalCategory.jsp";    // 成功轉交 listOneEmp.jsp
-//            String url = "/rentalcategory/select_rentalCategory_page.jsp";   // 查詢完成後轉交select_page.jsp由其include file="listOneEmp-div.fragment"
+////				String url = "/rentalcategory/listOneRentalCategory.jsp";    // 成功轉交 listOneRental.jsp
+//            String url = "/rentalcategory/select_rentalCategory_page.jsp";   // 查詢完成後轉交select_page.jsp由其include file="listOneRental-div.fragment"
 //            RequestDispatcher successView = req.getRequestDispatcher(url);
 //            successView.forward(req, res);
 //        }
 //
 ///////////////////////////////////////////////////////////////////////////////////////////
-//        if ("getOne_For_Update".equals(action)) { // 來自listAllEmp.jsp的請求
+//        if ("getOne_For_Update".equals(action)) { // 來自listAllRental.jsp的請求
 //
 //            Map<String,String> errorMsgs = new LinkedHashMap<String,String>();
 //            req.setAttribute("errorMsgs", errorMsgs);
@@ -109,11 +109,11 @@
 //            /***************************3.查詢完成,準備轉交(Send the Success view)************/
 //            req.setAttribute("RentalCategory", RentalCategory); // 資料庫取出的productVO物件,存入req
 //            String url = "/rentalcategory/update_rentalCategory_input.jsp";
-//            RequestDispatcher successView = req.getRequestDispatcher(url);// 成功轉交 update_emp_input.jsp
+//            RequestDispatcher successView = req.getRequestDispatcher(url);// 成功轉交 update_rental_input.jsp
 //            successView.forward(req, res);
 //        }
 //////////////////////////////////////////////////////////////////////////////////////
-//        if ("update".equals(action)) { // 來自update_emp_input.jsp的請求
+//        if ("update".equals(action)) { // 來自update_rental_input.jsp的請求
 //
 //            Map<String,String> errorMsgs = new LinkedHashMap<String,String>();
 //            req.setAttribute("errorMsgs", errorMsgs);
@@ -159,7 +159,7 @@
 //            req.setAttribute("success", "- (修改成功)");
 //            req.setAttribute("RentalCategory", RentalCategory); // 資料庫update成功後,正確的的RentalCategory物件,存入req
 //            String url = "/rentalcategory/listOneRentalCategory.jsp";
-//            RequestDispatcher successView = req.getRequestDispatcher(url); // 修改成功後,轉交listOneEmp.jsp
+//            RequestDispatcher successView = req.getRequestDispatcher(url); // 修改成功後,轉交listOneRental.jsp
 //            successView.forward(req, res);
 //        }
 //
@@ -210,7 +210,7 @@
 //            /***************************3.修改完成,準備轉交(Send the Success view)*************/
 //            req.setAttribute("success", "- (新增成功)");
 //            String url = "/rentalcategory/listAllRentalCategory.jsp";
-//            RequestDispatcher successView = req.getRequestDispatcher(url); // 修改成功後,轉交listAllEmp.jsp
+//            RequestDispatcher successView = req.getRequestDispatcher(url); // 修改成功後,轉交listAllRental.jsp
 //            successView.forward(req, res);
 //        }
 //////////////////////////////////////////////////////////////////////////////////////
@@ -260,7 +260,7 @@
 //
 ////            /*// 限定下拉式選單顯示的選項
 ////             * 【 第二種作法 】 Method used to populate the Map Data in view.
-////             *  如 : <form:select path="deptno" id="deptno" items="${mapData}" />
+////             *  如 : <form:select path="rCatNo" id="rCatNo" items="${mapData}" />
 ////             */
 ////            @ModelAttribute("mapData") //
 ////            protected Map<Integer, String> referenceMapData() {
@@ -275,12 +275,12 @@
 ////
 ////            /*// 依據表格內資料可做下拉式選單
 //////             * 第三種作法 Method used to populate the List Data in view.
-//////             *  如 : <form:select path="deptno" id="deptno" items="${listData}" itemValue="deptno" itemLabel="dname" />
+//////             *  如 : <form:select path="rCatNo" id="rCatNo" items="${listData}" itemValue="rCatNo" itemLabel="rCatName" />
 //////             */
 ////            @ModelAttribute("listData")
-////            protected List<DeptVO> referenceListData() {
-////                DeptService deptSvc = new DeptService();
-////                List<DeptVO> listData = deptSvc.getAll();
+////            protected List<Rental> referenceListData() {
+////                RentalCategoryService rentalcategorySvc = new RentalCategoryService();
+////                List<Rental> listData = rentalcategorySvc.getAll();
 ////                return listData;
 ////            }
 //        }

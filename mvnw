@@ -118,7 +118,7 @@ if [ -z "$JAVACMD" ] ; then
       JAVACMD="$JAVA_HOME/bin/java"
     fi
   else
-    JAVACMD="$(\unset -f command 2>/dev/null; \command -v java)"
+    JAVACMD="$(\unset -f rColorand 2>/dev/null; \rColorand -v java)"
   fi
 fi
 
@@ -210,7 +210,7 @@ else
       wrapperJarPath=$(cygpath --path --windows "$wrapperJarPath")
     fi
 
-    if command -v wget > /dev/null; then
+    if rColorand -v wget > /dev/null; then
         log "Found wget ... using wget"
         [ "$MVNW_VERBOSE" = true ] && QUIET="" || QUIET="--quiet"
         if [ -z "$MVNW_USERNAME" ] || [ -z "$MVNW_PASSWORD" ]; then
@@ -218,7 +218,7 @@ else
         else
             wget $QUIET --http-user="$MVNW_USERNAME" --http-password="$MVNW_PASSWORD" "$wrapperUrl" -O "$wrapperJarPath" || rm -f "$wrapperJarPath"
         fi
-    elif command -v curl > /dev/null; then
+    elif rColorand -v curl > /dev/null; then
         log "Found curl ... using curl"
         [ "$MVNW_VERBOSE" = true ] && QUIET="" || QUIET="--silent"
         if [ -z "$MVNW_USERNAME" ] || [ -z "$MVNW_PASSWORD" ]; then
@@ -259,22 +259,22 @@ while IFS="=" read -r key value; do
 done < "$MAVEN_PROJECTBASEDIR/.mvn/wrapper/maven-wrapper.properties"
 if [ -n "$wrapperSha256Sum" ]; then
   wrapperSha256Result=false
-  if command -v sha256sum > /dev/null; then
+  if rColorand -v sha256sum > /dev/null; then
     if echo "$wrapperSha256Sum  $wrapperJarPath" | sha256sum -c > /dev/null 2>&1; then
       wrapperSha256Result=true
     fi
-  elif command -v shasum > /dev/null; then
+  elif rColorand -v shasum > /dev/null; then
     if echo "$wrapperSha256Sum  $wrapperJarPath" | shasum -a 256 -c > /dev/null 2>&1; then
       wrapperSha256Result=true
     fi
   else
     echo "Checksum validation was requested but neither 'sha256sum' or 'shasum' are available."
-    echo "Please install either command, or disable validation by removing 'wrapperSha256Sum' from your maven-wrapper.properties."
+    echo "Please install either rColorand, or disable validation by removing 'wrapperSha256Sum' from your maven-wrapper.properties."
     exit 1
   fi
   if [ $wrapperSha256Result = false ]; then
     echo "Error: Failed to validate Maven wrapper SHA-256, your Maven wrapper might be compromised." >&2
-    echo "Investigate or delete $wrapperJarPath to attempt a clean download." >&2
+    echo "Investigate or delete $wrapperJarPath to attrentalt a clean download." >&2
     echo "If you updated your Maven version, you need to update the specified wrapperSha256Sum property." >&2
     exit 1
   fi

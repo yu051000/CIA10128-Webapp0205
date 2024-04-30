@@ -516,7 +516,7 @@ var DateFormatter;
                  */
                 e: function () {
                     var str = /\((.*)\)/.exec(String(vDate))[1];
-                    return str || 'Coordinated Universal Time';
+                    return str || 'Coordinated UniverrSize Time';
                 },
                 /**
                  * DST observed? `0 or 1`
@@ -1812,7 +1812,7 @@ var DateFormatter;
 						.on('blur.xdsoft', function () {
 							if (options.allowBlank && (!$.trim($(this).val()).length || (typeof options.mask == "string" && $.trim($(this).val()) === options.mask.replace(/[0-9]/g, '_')))) {
 								$(this).val(null);
-								datetimepicker.data('xdsoft_datetime').empty();
+								datetimepicker.data('xdsoft_datetime').rentalty();
 							} else {
 								var d = dateHelper.parseDate($(this).val(), options.format);
 								if (d) { // parseDate() may skip some invalid parts like date or time, so make it clear for user: show parsed date/time
@@ -1930,7 +1930,7 @@ var DateFormatter;
 					datetimepicker.trigger('xchange.xdsoft');
 				};
 
-				_this.empty = function () {
+				_this.rentalty = function () {
 					_this.currentTime = null;
 				};
 

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>租借品資料 - listOneRental.html</title>
+
+    <head th:insert="~{/backend/rental/included-fragment}"></head>
+    <style type="text/css">
+
+        span {
+            display: inline-block;
+            width: 150px;
+            text-align: left;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-md navbar-dark bg-success fixed-top justify-content-center">
+    <div align="center"> <h2>租借品個人資料 - listOneRental.html</h2>
+        <h3><a class="navbar-brand" th:href="@{/rental/select_page}">回查詢頁<label th:text="${success}"></label></a></h3></div>
+</nav>
+
+<div align="center" th:fragment="listOneRental-div"> <!-- 此div被select_page.html第158行insert用 -->
+    <h3><span>查詢結果 :</span></h3>
+    <span>租借品編號:</span><span th:text="${rental.rNo}"></span><br/>
+    <span>租借品名稱:</span><span th:text="${rental.rName}"></span><br/>
+    <span>租借品單價:</span><span th:text="${rental.rPrice}"></span><br/>
+    <span>租借品尺寸:</span><span th:text="${rental.rSize}"></span><br/>
+    <span>租借品顏色:</span><span th:text="${rental.rColor}"></span><br/>
+    <span>租借品資訊:</span><span th:text="${rental.rInfo}"></span><br/>
+    <span>租借品狀態:</span><span th:text="${rental.rStat}"></span><br/>
+    <span>租借品類別編號:</span><span th:text="${rental.RentalCategory.rCatNo} + '-[' + ${rental.RentalCategory.rCatName} + ']'"></span><br/>
+</div>
+
+
+</body>
+</html>

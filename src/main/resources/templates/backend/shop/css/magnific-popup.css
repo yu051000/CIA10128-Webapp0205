@@ -320,7 +320,7 @@ img.mfp-img {
     padding: 3px 5px;
     position: fixed;
     box-sizing: border-box; }
-    .mfp-img-mobile .mfp-bottom-bar:empty {
+    .mfp-img-mobile .mfp-bottom-bar:rentalty {
       padding: 0; }
   .mfp-img-mobile .mfp-counter {
     right: 5px;

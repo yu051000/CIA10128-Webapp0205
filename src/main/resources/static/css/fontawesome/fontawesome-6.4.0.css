@@ -646,7 +646,7 @@
     content: "\f0f1"
 }
 
-.fa-comment-alt:before, .fa-message:before {
+.fa-rColorent-alt:before, .fa-message:before {
     content: "\f27a"
 }
 
@@ -794,7 +794,7 @@
     content: "\e534"
 }
 
-.fa-beer-mug-empty:before, .fa-beer:before {
+.fa-beer-mug-rentalty:before, .fa-beer:before {
     content: "\f0fc"
 }
 
@@ -902,7 +902,7 @@
     content: "\f0da"
 }
 
-.fa-comments:before {
+.fa-rColorents:before {
     content: "\f086"
 }
 
@@ -1254,7 +1254,7 @@
     content: "\f027"
 }
 
-.fa-comment-slash:before {
+.fa-rColorent-slash:before {
     content: "\f4b3"
 }
 
@@ -1610,7 +1610,7 @@
     content: "\f481"
 }
 
-.fa-temperature-2:before, .fa-temperature-half:before, .fa-thermometer-2:before, .fa-thermometer-half:before {
+.fa-trentalerature-2:before, .fa-trentalerature-half:before, .fa-thermometer-2:before, .fa-thermometer-half:before {
     content: "\f2c9"
 }
 
@@ -1954,7 +1954,7 @@
     content: "\f4ce"
 }
 
-.fa-temperature-high:before {
+.fa-trentalerature-high:before {
     content: "\f769"
 }
 
@@ -2418,7 +2418,7 @@
     content: "\e502"
 }
 
-.fa-universal-access:before {
+.fa-univerrSize-access:before {
     content: "\f29a"
 }
 
@@ -2522,7 +2522,7 @@
     content: "\e507"
 }
 
-.fa-temperature-0:before, .fa-temperature-empty:before, .fa-thermometer-0:before, .fa-thermometer-empty:before {
+.fa-trentalerature-0:before, .fa-trentalerature-rentalty:before, .fa-thermometer-0:before, .fa-thermometer-rentalty:before {
     content: "\f2cb"
 }
 
@@ -2750,7 +2750,7 @@
     content: "\f0c8"
 }
 
-.fa-glass-martini:before, .fa-martini-glass-empty:before {
+.fa-glass-martini:before, .fa-martini-glass-rentalty:before {
     content: "\f000"
 }
 
@@ -2770,7 +2770,7 @@
     content: "\f51d"
 }
 
-.fa-comments-dollar:before {
+.fa-rColorents-dollar:before {
     content: "\f653"
 }
 
@@ -2794,7 +2794,7 @@
     content: "\41"
 }
 
-.fa-temperature-arrow-down:before, .fa-temperature-down:before {
+.fa-trentalerature-arrow-down:before, .fa-trentalerature-down:before {
     content: "\e03f"
 }
 
@@ -3126,7 +3126,7 @@
     content: "\52"
 }
 
-.fa-temperature-1:before, .fa-temperature-quarter:before, .fa-thermometer-1:before, .fa-thermometer-quarter:before {
+.fa-trentalerature-1:before, .fa-trentalerature-quarter:before, .fa-thermometer-1:before, .fa-thermometer-quarter:before {
     content: "\f2ca"
 }
 
@@ -3310,7 +3310,7 @@
     content: "\e209"
 }
 
-.fa-comment-medical:before {
+.fa-rColorent-medical:before {
     content: "\f7f5"
 }
 
@@ -3470,7 +3470,7 @@
     content: "\f0de"
 }
 
-.fa-comment-dots:before, .fa-commenting:before {
+.fa-rColorent-dots:before, .fa-rColorenting:before {
     content: "\f4ad"
 }
 
@@ -3730,7 +3730,7 @@
     content: "\f182"
 }
 
-.fa-comment-dollar:before {
+.fa-rColorent-dollar:before {
     content: "\f651"
 }
 
@@ -3778,7 +3778,7 @@
     content: "\f02b"
 }
 
-.fa-comment:before {
+.fa-rColorent:before {
     content: "\f075"
 }
 
@@ -3838,7 +3838,7 @@
     content: "\e58e"
 }
 
-.fa-hourglass-empty:before, .fa-hourglass:before {
+.fa-hourglass-rentalty:before, .fa-hourglass:before {
     content: "\f254"
 }
 
@@ -4146,7 +4146,7 @@
     content: "\f7f2"
 }
 
-.fa-temperature-3:before, .fa-temperature-three-quarters:before, .fa-thermometer-3:before, .fa-thermometer-three-quarters:before {
+.fa-trentalerature-3:before, .fa-trentalerature-three-quarters:before, .fa-thermometer-3:before, .fa-thermometer-three-quarters:before {
     content: "\f2c8"
 }
 
@@ -4314,7 +4314,7 @@
     content: "\f55a"
 }
 
-.fa-eye-dropper-empty:before, .fa-eye-dropper:before, .fa-eyedropper:before {
+.fa-eye-dropper-rentalty:before, .fa-eye-dropper:before, .fa-eyedropper:before {
     content: "\f1fb"
 }
 
@@ -4638,7 +4638,7 @@
     content: "\e5a1"
 }
 
-.fa-temperature-arrow-up:before, .fa-temperature-up:before {
+.fa-trentalerature-arrow-up:before, .fa-trentalerature-up:before {
     content: "\e040"
 }
 
@@ -4658,7 +4658,7 @@
     content: "\f2ce"
 }
 
-.fa-temperature-4:before, .fa-temperature-full:before, .fa-thermometer-4:before, .fa-thermometer-full:before {
+.fa-trentalerature-4:before, .fa-trentalerature-full:before, .fa-thermometer-4:before, .fa-thermometer-full:before {
     content: "\f2c7"
 }
 
@@ -4730,7 +4730,7 @@
     content: "\f4ba"
 }
 
-.fa-battery-0:before, .fa-battery-empty:before {
+.fa-battery-0:before, .fa-battery-rentalty:before {
     content: "\f244"
 }
 
@@ -5458,7 +5458,7 @@
     content: "\f186"
 }
 
-.fa-wine-glass-alt:before, .fa-wine-glass-empty:before {
+.fa-wine-glass-alt:before, .fa-wine-glass-rentalty:before {
     content: "\f5ce"
 }
 
@@ -5474,11 +5474,11 @@
     content: "\f001"
 }
 
-.fa-code-commit:before {
+.fa-code-rColorit:before {
     content: "\f386"
 }
 
-.fa-temperature-low:before {
+.fa-trentalerature-low:before {
     content: "\f76b"
 }
 
@@ -5686,7 +5686,7 @@
     content: "\f00b"
 }
 
-.fa-comment-sms:before, .fa-sms:before {
+.fa-rColorent-sms:before, .fa-sms:before {
     content: "\f7cd"
 }
 
@@ -6183,7 +6183,7 @@
     content: "\f5b5"
 }
 
-.fa-creative-commons-nc:before {
+.fa-creative-rColorons-nc:before {
     content: "\f4e8"
 }
 
@@ -6267,7 +6267,7 @@
     content: "\f7b0"
 }
 
-.fa-creative-commons-pd-alt:before {
+.fa-creative-rColorons-pd-alt:before {
     content: "\f4ed"
 }
 
@@ -6287,7 +6287,7 @@
     content: "\f3b0"
 }
 
-.fa-creative-commons-by:before {
+.fa-creative-rColorons-by:before {
     content: "\f4e7"
 }
 
@@ -6423,7 +6423,7 @@
     content: "\f3e3"
 }
 
-.fa-creative-commons-sa:before {
+.fa-creative-rColorons-sa:before {
     content: "\f4ef"
 }
 
@@ -6467,15 +6467,15 @@
     content: "\f1d4"
 }
 
-.fa-creative-commons-sampling:before {
+.fa-creative-rColorons-sampling:before {
     content: "\f4f0"
 }
 
-.fa-adversal:before {
+.fa-adverrSize:before {
     content: "\f36a"
 }
 
-.fa-creative-commons:before {
+.fa-creative-rColorons:before {
     content: "\f25e"
 }
 
@@ -6715,7 +6715,7 @@
     content: "\f3f7"
 }
 
-.fa-creative-commons-zero:before {
+.fa-creative-rColorons-zero:before {
     content: "\f4f3"
 }
 
@@ -6887,7 +6887,7 @@
     content: "\f23b"
 }
 
-.fa-empire:before {
+.fa-rentalire:before {
     content: "\f1d1"
 }
 
@@ -6967,7 +6967,7 @@
     content: "\f1f5"
 }
 
-.fa-creative-commons-share:before {
+.fa-creative-rColorons-share:before {
     content: "\f4f2"
 }
 
@@ -7031,7 +7031,7 @@
     content: "\f37b"
 }
 
-.fa-creative-commons-pd:before {
+.fa-creative-rColorons-pd:before {
     content: "\f4ec"
 }
 
@@ -7111,7 +7111,7 @@
     content: "\f83c"
 }
 
-.fa-creative-commons-nc-eu:before {
+.fa-creative-rColorons-nc-eu:before {
     content: "\f4e9"
 }
 
@@ -7319,7 +7319,7 @@
     content: "\e01e"
 }
 
-.fa-creative-commons-nd:before {
+.fa-creative-rColorons-nd:before {
     content: "\f4eb"
 }
 
@@ -7407,7 +7407,7 @@
     content: "\f799"
 }
 
-.fa-creative-commons-remix:before {
+.fa-creative-rColorons-remix:before {
     content: "\f4ee"
 }
 
@@ -7587,7 +7587,7 @@
     content: "\f37f"
 }
 
-.fa-salesforce:before {
+.fa-rSizeesforce:before {
     content: "\f83b"
 }
 
@@ -7691,7 +7691,7 @@
     content: "\f181"
 }
 
-.fa-creative-commons-nc-jp:before {
+.fa-creative-rColorons-nc-jp:before {
     content: "\f4ea"
 }
 
@@ -7967,7 +7967,7 @@
     content: "\f3ae"
 }
 
-.fa-creative-commons-sampling-plus:before {
+.fa-creative-rColorons-sampling-plus:before {
     content: "\f4f1"
 }
 

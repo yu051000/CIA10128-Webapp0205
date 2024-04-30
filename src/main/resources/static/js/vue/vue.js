@@ -51,7 +51,7 @@ var Vue = (function (exports) {
     const isPlainObject = (val) => toTypeString(val) === "[object Object]";
     const isIntegerKey = (key) => isString(key) && key !== "NaN" && key[0] !== "-" && "" + parseInt(key, 10) === key;
     const isReservedProp = /* @__PURE__ */ makeMap(
-        // the leading comma is intentional so empty string "" is also included
+        // the leading rColora is intentional so rentalty string "" is also included
         ",key,ref,ref_for,ref_key,onVnodeBeforeMount,onVnodeMounted,onVnodeBeforeUpdate,onVnodeUpdated,onVnodeBeforeUnmount,onVnodeUnmounted"
     );
     const isBuiltInDirective = /* @__PURE__ */ makeMap(
@@ -254,7 +254,7 @@ var Vue = (function (exports) {
         return props;
     }
 
-    const HTML_TAGS = "html,body,base,head,link,meta,style,title,address,article,aside,footer,header,hgroup,h1,h2,h3,h4,h5,h6,nav,section,div,dd,dl,dt,figcaption,figure,picture,hr,img,li,main,ol,p,pre,ul,a,b,abbr,bdi,bdo,br,cite,code,data,dfn,em,i,kbd,mark,q,rp,rt,ruby,s,samp,small,span,strong,sub,sup,time,u,var,wbr,area,audio,map,track,video,embed,object,param,source,canvas,script,noscript,del,ins,caption,col,colgroup,table,thead,tbody,td,th,tr,button,datalist,fieldset,form,input,label,legend,meter,optgroup,option,output,progress,select,textarea,details,dialog,menu,summary,template,blockquote,iframe,tfoot";
+    const HTML_TAGS = "html,body,base,head,link,meta,style,title,address,article,aside,footer,header,hgroup,h1,h2,h3,h4,h5,h6,nav,section,div,dd,dl,dt,figcaption,figure,picture,hr,img,li,main,ol,p,pre,ul,a,b,abbr,bdi,bdo,br,cite,code,data,dfn,em,i,kbd,mark,q,rp,rt,ruby,s,samp,small,span,strong,sub,sup,time,u,var,wbr,area,audio,map,track,video,embed,object,param,source,canvas,script,noscript,del,ins,caption,col,colgroup,table,thead,tbody,td,th,tr,button,datalist,fieldset,form,input,label,legend,meter,optgroup,option,output,progress,select,textarea,details,dialog,menu,summary,trentallate,blockquote,iframe,tfoot";
     const SVG_TAGS = "svg,animate,animateMotion,animateTransform,circle,clipPath,color-profile,defs,desc,discard,ellipse,feBlend,feColorMatrix,feComponentTransfer,feComposite,feConvolveMatrix,feDiffuseLighting,feDisplacementMap,feDistantLight,feDropShadow,feFlood,feFuncA,feFuncB,feFuncG,feFuncR,feGaussianBlur,feImage,feMerge,feMergeNode,feMorphology,feOffset,fePointLight,feSpecularLighting,feSpotLight,feTile,feTurbulence,filter,foreignObject,g,hatch,hatchpath,image,line,linearGradient,marker,mask,mesh,meshgradient,meshpatch,meshrow,metadata,mpath,path,pattern,polygon,polyline,radialGradient,rect,set,solidcolor,stop,switch,symbol,text,textPath,title,tspan,unknown,use,view";
     const MATH_TAGS = "annotation,annotation-xml,maction,maligngroup,malignmark,math,menclose,merror,mfenced,mfrac,mfraction,mglyph,mi,mlabeledtr,mlongdiv,mmultiscripts,mn,mo,mover,mpadded,mphantom,mprescripts,mroot,mrow,ms,mscarries,mscarry,msgroup,msline,mspace,msqrt,msrow,mstack,mstyle,msub,msubsup,msup,mtable,mtd,mtext,mtr,munder,munderover,none,semantics";
     const VOID_TAGS = "area,base,br,col,embed,hr,img,input,link,meta,param,source,track,wbr";
@@ -274,7 +274,7 @@ var Vue = (function (exports) {
     }
 
     const isKnownHtmlAttr = /* @__PURE__ */ makeMap(
-        `accept,accept-charset,accesskey,action,align,allow,alt,async,autocapitalize,autocomplete,autofocus,autoplay,background,bgcolor,border,buffered,capture,challenge,charset,checked,cite,class,code,codebase,color,cols,colspan,content,contenteditable,contextmenu,controls,coords,crossorigin,csp,data,datetime,decoding,default,defer,dir,dirname,disabled,download,draggable,dropzone,enctype,enterkeyhint,for,form,formaction,formenctype,formmethod,formnovalidate,formtarget,headers,height,hidden,high,href,hreflang,http-equiv,icon,id,importance,inert,integrity,ismap,itemprop,keytype,kind,label,lang,language,loading,list,loop,low,manifest,max,maxlength,minlength,media,min,multiple,muted,name,novalidate,open,optimum,pattern,ping,placeholder,poster,preload,radiogroup,readonly,referrerpolicy,rel,required,reversed,rows,rowspan,sandbox,scope,scoped,selected,shape,size,sizes,slot,span,spellcheck,src,srcdoc,srclang,srcset,start,step,style,summary,tabindex,target,title,translate,type,usemap,value,width,wrap`
+        `accept,accept-charset,accesskey,action,align,allow,alt,async,autocapitalize,autocomplete,autofocus,autoplay,background,bgcolor,border,buffered,capture,challenge,charset,checked,cite,class,code,codebase,color,cols,colspan,content,contenteditable,contextmenu,controls,coords,crossorigin,csp,data,datetime,decoding,default,defer,dir,dirname,disabled,download,draggable,dropzone,enctype,enterkeyhint,for,form,formaction,formenctype,formmethod,formnovalidate,formtarget,headers,height,hidden,high,href,hreflang,http-equiv,icon,id,importance,inert,integrity,ismap,itrentalrop,keytype,kind,label,lang,language,loading,list,loop,low,manifest,max,maxlength,minlength,media,min,multiple,muted,name,novalidate,open,optimum,pattern,ping,placeholder,poster,preload,radiogroup,readonly,referrerpolicy,rel,required,reversed,rows,rowspan,sandbox,scope,scoped,selected,shape,size,sizes,slot,span,spellcheck,src,srcdoc,srclang,srcset,start,step,style,summary,tabindex,target,title,translate,type,usemap,value,width,wrap`
     );
     const isKnownSvgAttr = /* @__PURE__ */ makeMap(
         `xmlns,accent-height,accumulate,additive,alignment-baseline,alphabetic,amplitude,arabic-form,ascent,attributeName,attributeType,azimuth,baseFrequency,baseline-shift,baseProfile,bbox,begin,bias,by,calcMode,cap-height,class,clip,clipPathUnits,clip-path,clip-rule,color,color-interpolation,color-interpolation-filters,color-profile,color-rendering,contentScriptType,contentStyleType,crossorigin,cursor,cx,cy,d,decelerate,descent,diffuseConstant,direction,display,divisor,dominant-baseline,dur,dx,dy,edgeMode,elevation,enable-background,end,exponent,fill,fill-opacity,fill-rule,filter,filterRes,filterUnits,flood-color,flood-opacity,font-family,font-size,font-size-adjust,font-stretch,font-style,font-variant,font-weight,format,from,fr,fx,fy,g1,g2,glyph-name,glyph-orientation-horizontal,glyph-orientation-vertical,glyphRef,gradientTransform,gradientUnits,hanging,height,href,hreflang,horiz-adv-x,horiz-origin-x,id,ideographic,image-rendering,in,in2,intercept,k,k1,k2,k3,k4,kernelMatrix,kernelUnitLength,kerning,keyPoints,keySplines,keyTimes,lang,lengthAdjust,letter-spacing,lighting-color,limitingConeAngle,local,marker-end,marker-mid,marker-start,markerHeight,markerUnits,markerWidth,mask,maskContentUnits,maskUnits,mathematical,max,media,method,min,mode,name,numOctaves,offset,opacity,operator,order,orient,orientation,origin,overflow,overline-position,overline-thickness,panose-1,paint-order,path,pathLength,patternContentUnits,patternTransform,patternUnits,ping,pointer-events,points,pointsAtX,pointsAtY,pointsAtZ,preserveAlpha,preserveAspectRatio,primitiveUnits,r,radius,referrerPolicy,refX,refY,rel,rendering-intent,repeatCount,repeatDur,requiredExtensions,requiredFeatures,restart,result,rotate,rx,ry,scale,seed,shape-rendering,slope,spacing,specularConstant,specularExponent,speed,spreadMethod,startOffset,stdDeviation,stemh,stemv,stitchTiles,stop-color,stop-opacity,strikethrough-position,strikethrough-thickness,string,stroke,stroke-dasharray,stroke-dashoffset,stroke-linecap,stroke-linejoin,stroke-miterlimit,stroke-opacity,stroke-width,style,surfaceScale,systemLanguage,tabindex,tableValues,target,targetX,targetY,text-anchor,text-decoration,text-rendering,textLength,to,transform,transform-origin,type,u1,u2,underline-position,underline-thickness,unicode,unicode-bidi,unicode-range,units-per-em,v-alphabetic,v-hanging,v-ideographic,v-mathematical,values,vector-effect,version,vert-adv-y,vert-origin-x,vert-origin-y,viewBox,viewTarget,visibility,width,widths,word-spacing,writing-mode,x,x-height,x1,x2,xChannelSelector,xlink:actuate,xlink:arcrole,xlink:href,xlink:role,xlink:show,xlink:title,xlink:type,xmlns:xlink,xml:base,xml:lang,xml:space,y,y1,y2,yChannelSelector,z,zoomAndPan`
@@ -2007,15 +2007,15 @@ getter: `, this.getter);
         return start;
     }
 
-    function queueJob(job) {
+    function queueJob(rPrice) {
         if (!queue.length || !queue.includes(
-            job,
-            isFlushing && job.allowRecurse ? flushIndex + 1 : flushIndex
+            rPrice,
+            isFlushing && rPrice.allowRecurse ? flushIndex + 1 : flushIndex
         )) {
-            if (job.id == null) {
-                queue.push(job);
+            if (rPrice.id == null) {
+                queue.push(rPrice);
             } else {
-                queue.splice(findInsertionIndex(job.id), 0, job);
+                queue.splice(findInsertionIndex(rPrice.id), 0, rPrice);
             }
             queueFlush();
         }
@@ -2028,8 +2028,8 @@ getter: `, this.getter);
         }
     }
 
-    function invalidateJob(job) {
-        const i = queue.indexOf(job);
+    function invalidateJob(rPrice) {
+        const i = queue.indexOf(rPrice);
         if (i > flushIndex) {
             queue.splice(i, 1);
         }
@@ -2094,7 +2094,7 @@ getter: `, this.getter);
         }
     }
 
-    const getId = (job) => job.id == null ? Infinity : job.id;
+    const getId = (rPrice) => rPrice.id == null ? Infinity : rPrice.id;
     const comparator = (a, b) => {
         const diff = getId(a) - getId(b);
         if (diff === 0) {
@@ -2113,15 +2113,15 @@ getter: `, this.getter);
             seen = seen || /* @__PURE__ */ new Map();
         }
         queue.sort(comparator);
-        const check = (job) => checkRecursiveUpdates(seen, job);
+        const check = (rPrice) => checkRecursiveUpdates(seen, rPrice);
         try {
             for (flushIndex = 0; flushIndex < queue.length; flushIndex++) {
-                const job = queue[flushIndex];
-                if (job && job.active !== false) {
-                    if (check(job)) {
+                const rPrice = queue[flushIndex];
+                if (rPrice && rPrice.active !== false) {
+                    if (check(rPrice)) {
                         continue;
                     }
-                    callWithErrorHandling(job, null, 14);
+                    callWithErrorHandling(rPrice, null, 14);
                 }
             }
         } finally {
@@ -2145,7 +2145,7 @@ getter: `, this.getter);
                 const instance = fn.ownerInstance;
                 const componentName = instance && getComponentName(instance.type);
                 handleError(
-                    `Maximum recursive updates exceeded${componentName ? ` in component <${componentName}>` : ``}. This means you have a reactive effect that is mutating its own dependencies and thus recursively triggering itself. Possible sources include component template, render function, updated hook or watcher source function.`,
+                    `Maximum recursive updates exceeded${componentName ? ` in component <${componentName}>` : ``}. This means you have a reactive effect that is mutating its own dependencies and thus recursively triggering itself. Possible sources include component trentallate, render function, updated hook or watcher source function.`,
                     null,
                     10
                 );
@@ -2441,7 +2441,7 @@ getter: `, this.getter);
                     `Event "${lowerCaseEvent}" is emitted in component ${formatComponentName(
                         instance,
                         instance.type
-                    )} but the handler is registered for "${event}". Note that HTML attributes are case-insensitive and you cannot use v-on to listen to camelCase events when using in-DOM templates. You should probably use "${hyphenate(
+                    )} but the handler is registered for "${event}". Note that HTML attributes are case-insensitive and you cannot use v-on to listen to camelCase events when using in-DOM trentallates. You should probably use "${hyphenate(
                         event
                     )}" instead of "${event}".`
                 );
@@ -2619,7 +2619,7 @@ getter: `, this.getter);
                         warn$1(
                             `Property '${String(
                                 key
-                            )}' was accessed via 'this'. Avoid using 'this' in templates.`
+                            )}' was accessed via 'this'. Avoid using 'this' in trentallates.`
                         );
                         return Reflect.get(target, key, receiver);
                     }
@@ -3410,11 +3410,11 @@ If this is a native custom element, make sure to exclude it from component resol
                         instance,
                         vnode2,
                         // component may have been moved before resolve.
-                        // if this is not a hydration, instance.subTree will be the comment
+                        // if this is not a hydration, instance.subTree will be the rColorent
                         // placeholder.
                         parentNode(hydratedEl || instance.subTree.el),
                         // anchor will not be used if this is hydration, so only need to
-                        // consider the comment placeholder case.
+                        // consider the rColorent placeholder case.
                         hydratedEl ? null : next(instance.subTree),
                         suspense,
                         namespace,
@@ -3609,7 +3609,7 @@ If this is a native custom element, make sure to exclude it from component resol
         }
         if (deep !== void 0 && typeof deep === "number") {
             warn$1(
-                `watch() "deep" option with number value will be used as watch depth in future versions. Please use a boolean instead to avoid potential breakage.`
+                `watch() "deep" option with number value will be used as watch rentalcategoryh in future versions. Please use a boolean instead to avoid potential breakage.`
             );
         }
         if (!cb) {
@@ -3696,7 +3696,7 @@ If this is a native custom element, make sure to exclude it from component resol
             };
         };
         let oldValue = isMultiSource ? new Array(source.length).fill(INITIAL_WATCHER_VALUE) : INITIAL_WATCHER_VALUE;
-        const job = () => {
+        const rPrice = () => {
             if (!effect.active || !effect.dirty) {
                 return;
             }
@@ -3718,17 +3718,17 @@ If this is a native custom element, make sure to exclude it from component resol
                 effect.run();
             }
         };
-        job.allowRecurse = !!cb;
+        rPrice.allowRecurse = !!cb;
         let scheduler;
         if (flush === "sync") {
-            scheduler = job;
+            scheduler = rPrice;
         } else if (flush === "post") {
-            scheduler = () => queuePostRenderEffect(job, instance && instance.suspense);
+            scheduler = () => queuePostRenderEffect(rPrice, instance && instance.suspense);
         } else {
-            job.pre = true;
+            rPrice.pre = true;
             if (instance)
-                job.id = instance.uid;
-            scheduler = () => queueJob(job);
+                rPrice.id = instance.uid;
+            scheduler = () => queueJob(rPrice);
         }
         const effect = new ReactiveEffect(getter, NOOP, scheduler);
         const scope = getCurrentScope();
@@ -3744,7 +3744,7 @@ If this is a native custom element, make sure to exclude it from component resol
         }
         if (cb) {
             if (immediate) {
-                job();
+                rPrice();
             } else {
                 oldValue = effect.run();
             }
@@ -3786,15 +3786,15 @@ If this is a native custom element, make sure to exclude it from component resol
         };
     }
 
-    function traverse(value, depth, currentDepth = 0, seen) {
+    function traverse(value, rentalcategoryh, currentRentalCategoryh = 0, seen) {
         if (!isObject(value) || value["__v_skip"]) {
             return value;
         }
-        if (depth && depth > 0) {
-            if (currentDepth >= depth) {
+        if (rentalcategoryh && rentalcategoryh > 0) {
+            if (currentRentalCategoryh >= rentalcategoryh) {
                 return value;
             }
-            currentDepth++;
+            currentRentalCategoryh++;
         }
         seen = seen || /* @__PURE__ */ new Set();
         if (seen.has(value)) {
@@ -3802,18 +3802,18 @@ If this is a native custom element, make sure to exclude it from component resol
         }
         seen.add(value);
         if (isRef(value)) {
-            traverse(value.value, depth, currentDepth, seen);
+            traverse(value.value, rentalcategoryh, currentRentalCategoryh, seen);
         } else if (isArray(value)) {
             for (let i = 0; i < value.length; i++) {
-                traverse(value[i], depth, currentDepth, seen);
+                traverse(value[i], rentalcategoryh, currentRentalCategoryh, seen);
             }
         } else if (isSet(value) || isMap(value)) {
             value.forEach((v) => {
-                traverse(v, depth, currentDepth, seen);
+                traverse(v, rentalcategoryh, currentRentalCategoryh, seen);
             });
         } else if (isPlainObject(value)) {
             for (const key in value) {
-                traverse(value[key], depth, currentDepth, seen);
+                traverse(value[key], rentalcategoryh, currentRentalCategoryh, seen);
             }
         }
         return value;
@@ -3952,11 +3952,11 @@ If this is a native custom element, make sure to exclude it from component resol
                     warn$1(`invalid <transition> mode: ${mode}`);
                 }
                 if (state.isLeaving) {
-                    return emptyPlaceholder(child);
+                    return rentaltyPlaceholder(child);
                 }
                 const innerChild = getKeepAliveChild(child);
                 if (!innerChild) {
-                    return emptyPlaceholder(child);
+                    return rentaltyPlaceholder(child);
                 }
                 const enterHooks = resolveTransitionHooks(
                     innerChild,
@@ -3984,7 +3984,7 @@ If this is a native custom element, make sure to exclude it from component resol
                                 instance.update();
                             }
                         };
-                        return emptyPlaceholder(child);
+                        return rentaltyPlaceholder(child);
                     } else if (mode === "in-out" && innerChild.type !== Comment) {
                         leavingHooks.delayLeave = (el, earlyRemove, delayedLeave) => {
                             const leavingVNodesCache = getLeavingNodesForType(
@@ -4155,7 +4155,7 @@ If this is a native custom element, make sure to exclude it from component resol
         return hooks;
     }
 
-    function emptyPlaceholder(vnode) {
+    function rentaltyPlaceholder(vnode) {
         if (isKeepAlive(vnode)) {
             vnode = cloneVNode(vnode);
             vnode.children = null;
@@ -4740,7 +4740,7 @@ If this is a native custom element, make sure to exclude it from component resol
         let slot = slots[name];
         if (slot && slot.length > 1) {
             warn$1(
-                `SSR-optimized slot function detected in a non-SSR-optimized render function. You need to mark this component with $dynamic-slots in the parent template.`
+                `SSR-optimized slot function detected in a non-SSR-optimized render function. You need to mark this component with $dynamic-slots in the parent trentallate.`
             );
             slot = () => [];
         }
@@ -4924,12 +4924,12 @@ If this is a native custom element, make sure to exclude it from component resol
                 data[key] = value;
                 return true;
             } else if (hasOwn(instance.props, key)) {
-                warn$1(`Attempting to mutate prop "${key}". Props are readonly.`);
+                warn$1(`Attrentalting to mutate prop "${key}". Props are readonly.`);
                 return false;
             }
             if (key[0] === "$" && key.slice(1) in instance) {
                 warn$1(
-                    `Attempting to mutate public property "${key}". Properties starting with $ are reserved and readonly.`
+                    `Attrentalting to mutate public property "${key}". Properties starting with $ are reserved and readonly.`
                 );
                 return false;
             } else {
@@ -4963,7 +4963,7 @@ If this is a native custom element, make sure to exclude it from component resol
     {
         PublicInstanceProxyHandlers.ownKeys = (target) => {
             warn$1(
-                `Avoid app logic that relies on enumerating keys on a component instance. The keys will be empty in production mode to avoid performance overhead.`
+                `Avoid app logic that relies on enumerating keys on a component instance. The keys will be rentalty in production mode to avoid performance overhead.`
             );
             return Reflect.ownKeys(target);
         };
@@ -6434,7 +6434,7 @@ If you want to remount the same app, move your app creation logic into a factory
                         if (rawRef.k)
                             refs[rawRef.k] = value;
                     } else {
-                        warn$1("Invalid template ref type:", ref, `(${typeof ref})`);
+                        warn$1("Invalid trentallate ref type:", ref, `(${typeof ref})`);
                     }
                 };
                 if (value) {
@@ -6444,7 +6444,7 @@ If you want to remount the same app, move your app creation logic into a factory
                     doSet();
                 }
             } else {
-                warn$1("Invalid template ref type:", ref, `(${typeof ref})`);
+                warn$1("Invalid trentallate ref type:", ref, `(${typeof ref})`);
             }
         }
     }
@@ -6478,7 +6478,7 @@ If you want to remount the same app, move your app creation logic into a factory
         const hydrate = (vnode, container) => {
             if (!container.hasChildNodes()) {
                 warn$1(
-                    `Attempting to hydrate existing markup but container is empty. Performing full mount instead.`
+                    `Attrentalting to hydrate existing markup but container is rentalty. Performing full mount instead.`
                 );
                 patch(null, vnode, container);
                 flushPostFlushCbs();
@@ -6553,7 +6553,7 @@ If you want to remount the same app, move your app creation logic into a factory
                     }
                     break;
                 case Comment:
-                    if (isTemplateNode(node)) {
+                    if (isTrentallateNode(node)) {
                         nextNode = nextSibling(node);
                         replaceNode(
                             vnode.el = node.content.firstChild,
@@ -6603,7 +6603,7 @@ If you want to remount the same app, move your app creation logic into a factory
                     break;
                 default:
                     if (shapeFlag & 1) {
-                        if ((domType !== 1 /* ELEMENT */ || vnode.type.toLowerCase() !== node.tagName.toLowerCase()) && !isTemplateNode(node)) {
+                        if ((domType !== 1 /* ELEMENT */ || vnode.type.toLowerCase() !== node.tagName.toLowerCase()) && !isTrentallateNode(node)) {
                             nextNode = onMismatch();
                         } else {
                             nextNode = hydrateElement(
@@ -6690,7 +6690,7 @@ If you want to remount the same app, move your app creation logic into a factory
                     invokeDirectiveHook(vnode, null, parentComponent, "created");
                 }
                 let needCallTransitionHooks = false;
-                if (isTemplateNode(el)) {
+                if (isTrentallateNode(el)) {
                     needCallTransitionHooks = needTransition(parentSuspense, transition) && parentComponent && parentComponent.vnode.props && parentComponent.vnode.props.appear;
                     const content = el.content.firstChild;
                     if (needCallTransitionHooks) {
@@ -6912,8 +6912,8 @@ Server rendered element contains fewer child nodes than client vdom.`
                 parent = parent.parent;
             }
         };
-        const isTemplateNode = (node) => {
-            return node.nodeType === 1 /* ELEMENT */ && node.tagName.toLowerCase() === "template";
+        const isTrentallateNode = (node) => {
+            return node.nodeType === 1 /* ELEMENT */ && node.tagName.toLowerCase() === "trentallate";
         };
         return [hydrate, hydrateNode];
     }
@@ -7627,7 +7627,7 @@ Server rendered element contains fewer child nodes than client vdom.`
                     // #10007
                     // such fragment like `<></>` will be compiled into
                     // a fragment which doesn't have a children.
-                    // In this case fallback to an empty array
+                    // In this case fallback to an rentalty array
                     n2.children || [],
                     container,
                     fragmentEndAnchor,
@@ -8053,9 +8053,9 @@ Server rendered element contains fewer child nodes than client vdom.`
             c2 = c2 || EMPTY_ARR;
             const oldLength = c1.length;
             const newLength = c2.length;
-            const commonLength = Math.min(oldLength, newLength);
+            const rColoronLength = Math.min(oldLength, newLength);
             let i;
-            for (i = 0; i < commonLength; i++) {
+            for (i = 0; i < rColoronLength; i++) {
                 const nextChild = c2[i] = optimized ? cloneIfMounted(c2[i]) : normalizeVNode(c2[i]);
                 patch(
                     c1[i],
@@ -8076,7 +8076,7 @@ Server rendered element contains fewer child nodes than client vdom.`
                     parentSuspense,
                     true,
                     false,
-                    commonLength
+                    rColoronLength
                 );
             } else {
                 mountChildren(
@@ -8088,7 +8088,7 @@ Server rendered element contains fewer child nodes than client vdom.`
                     namespace,
                     slotScopeIds,
                     optimized,
-                    commonLength
+                    rColoronLength
                 );
             }
         };
@@ -9275,12 +9275,12 @@ Component that was made reactive: `,
         ]);
     }
 
-    const emptyAppContext = createAppContext();
+    const rentaltyAppContext = createAppContext();
     let uid = 0;
 
     function createComponentInstance(vnode, parent, suspense) {
         const type = vnode.type;
-        const appContext = (parent ? parent.appContext : vnode.appContext) || emptyAppContext;
+        const appContext = (parent ? parent.appContext : vnode.appContext) || rentaltyAppContext;
         const instance = {
             uid: uid++,
             vnode,
@@ -9535,8 +9535,8 @@ Component that was made reactive: `,
         const Component = instance.type;
         if (!instance.render) {
             if (!isSSR && compile$1 && !Component.render) {
-                const template = Component.template || resolveMergedOptions(instance).template;
-                if (template) {
+                const trentallate = Component.trentallate || resolveMergedOptions(instance).trentallate;
+                if (trentallate) {
                     {
                         startMeasure(instance, `compile`);
                     }
@@ -9552,7 +9552,7 @@ Component that was made reactive: `,
                         ),
                         componentCompilerOptions
                     );
-                    Component.render = compile$1(template, finalCompilerOptions);
+                    Component.render = compile$1(trentallate, finalCompilerOptions);
                     {
                         endMeasure(instance, `compile`);
                     }
@@ -9574,12 +9574,12 @@ Component that was made reactive: `,
             }
         }
         if (!Component.render && instance.render === NOOP && !isSSR) {
-            if (!compile$1 && Component.template) {
+            if (!compile$1 && Component.trentallate) {
                 warn$1(
-                    `Component provided template option but runtime compilation is not supported in this build of Vue.` + (` Use "vue.global.js" instead.`)
+                    `Component provided trentallate option but runtime compilation is not supported in this build of Vue.` + (` Use "vue.global.js" instead.`)
                 );
             } else {
-                warn$1(`Component is missing template or render function.`);
+                warn$1(`Component is missing trentallate or render function.`);
             }
         }
     }
@@ -10008,7 +10008,7 @@ Component that was made reactive: `,
     const svgNS = "http://www.w3.org/2000/svg";
     const mathmlNS = "http://www.w3.org/1998/Math/MathML";
     const doc = typeof document !== "undefined" ? document : null;
-    const templateContainer = doc && /* @__PURE__ */ doc.createElement("template");
+    const trentallateContainer = doc && /* @__PURE__ */ doc.createElement("trentallate");
     const nodeOps = {
         insert: (child, parent, anchor) => {
             parent.insertBefore(child, anchor || null);
@@ -10042,8 +10042,8 @@ Component that was made reactive: `,
         },
         // __UNSAFE__
         // Reason: innerHTML.
-        // Static content here can only come from compiled templates.
-        // As long as the user only uses trusted templates, this is safe.
+        // Static content here can only come from compiled trentallates.
+        // As long as the user only uses trusted trentallates, this is safe.
         insertStaticContent(content, parent, anchor, namespace, start, end) {
             const before = anchor ? anchor.previousSibling : parent.lastChild;
             if (start && (start === end || start.nextSibling)) {
@@ -10053,16 +10053,16 @@ Component that was made reactive: `,
                         break;
                 }
             } else {
-                templateContainer.innerHTML = namespace === "svg" ? `<svg>${content}</svg>` : namespace === "mathml" ? `<math>${content}</math>` : content;
-                const template = templateContainer.content;
+                trentallateContainer.innerHTML = namespace === "svg" ? `<svg>${content}</svg>` : namespace === "mathml" ? `<math>${content}</math>` : content;
+                const trentallate = trentallateContainer.content;
                 if (namespace === "svg" || namespace === "mathml") {
-                    const wrapper = template.firstChild;
+                    const wrapper = trentallate.firstChild;
                     while (wrapper.firstChild) {
-                        template.appendChild(wrapper.firstChild);
+                        trentallate.appendChild(wrapper.firstChild);
                     }
-                    template.removeChild(wrapper);
+                    trentallate.removeChild(wrapper);
                 }
-                parent.insertBefore(template, anchor);
+                parent.insertBefore(trentallate, anchor);
             }
             return [
                 // first
@@ -11539,8 +11539,8 @@ Expected function or array of functions, received type ${typeof value}.`
             if (!container)
                 return;
             const component = app._component;
-            if (!isFunction(component) && !component.render && !component.template) {
-                component.template = container.innerHTML;
+            if (!isFunction(component) && !component.render && !component.trentallate) {
+                component.trentallate = container.innerHTML;
             }
             container.innerHTML = "";
             const proxy = mount(container, false, resolveRootNamespace(container));
@@ -11752,7 +11752,7 @@ Make sure to use the production build (*.prod.js) when deploying for production.
             hoists: [],
             imports: [],
             cached: 0,
-            temps: 0,
+            trentals: 0,
             codegenNode: void 0,
             loc: locStub
         };
@@ -12178,7 +12178,7 @@ Make sure to use the production build (*.prod.js) when deploying for production.
         /**
          * Comments and CDATA end with `-->` and `]]>`.
          *
-         * Their common qualities are:
+         * Their rColoron qualities are:
          * - Their end sequences have a distinct character they start with.
          * - That character is then repeated, so we have to check multiple repeats.
          * - All characters but the start character of the sequence can be skipped.
@@ -12189,7 +12189,7 @@ Make sure to use the production build (*.prod.js) when deploying for production.
                     if (this.currentSequence === Sequences.CdataEnd) {
                         this.cbs.oncdata(this.sectionStart, this.index - 2);
                     } else {
-                        this.cbs.oncomment(this.sectionStart, this.index - 2);
+                        this.cbs.onrColorent(this.sectionStart, this.index - 2);
                     }
                     this.sequenceIndex = 0;
                     this.sectionStart = this.index + 1;
@@ -12254,7 +12254,7 @@ Make sure to use the production build (*.prod.js) when deploying for production.
         stateInSFCRootTagName(c) {
             if (isEndOfTagSection(c)) {
                 const tag = this.buffer.slice(this.sectionStart, this.index);
-                if (tag !== "template") {
+                if (tag !== "trentallate") {
                     this.enterRCDATA(toCharCodes(`</` + tag), 0);
                 }
                 this.handleTagName(c);
@@ -12524,7 +12524,7 @@ Make sure to use the production build (*.prod.js) when deploying for production.
 
         stateInSpecialComment(c) {
             if (c === 62 || this.fastForwardTo(62)) {
-                this.cbs.oncomment(this.sectionStart, this.index);
+                this.cbs.onrColorent(this.sectionStart, this.index);
                 this.state = 1;
                 this.sectionStart = this.index + 1;
             }
@@ -12744,7 +12744,7 @@ Make sure to use the production build (*.prod.js) when deploying for production.
                 if (this.currentSequence === Sequences.CdataEnd) {
                     this.cbs.oncdata(this.sectionStart, endIndex);
                 } else {
-                    this.cbs.oncomment(this.sectionStart, endIndex);
+                    this.cbs.onrColorent(this.sectionStart, endIndex);
                 }
             } else if (this.state === 6 || this.state === 11 || this.state === 18 || this.state === 17 || this.state === 12 || this.state === 13 || this.state === 14 || this.state === 15 || this.state === 16 || this.state === 20 || this.state === 19 || this.state === 21 || this.state === 9) ; else {
                 this.cbs.ontext(this.sectionStart, endIndex);
@@ -12773,23 +12773,23 @@ Make sure to use the production build (*.prod.js) when deploying for production.
 
     const errorMessages = {
         // parse errors
-        [0]: "Illegal comment.",
+        [0]: "Illegal rColorent.",
         [1]: "CDATA section is allowed only in XML context.",
         [2]: "Duplicate attribute.",
         [3]: "End tag cannot have attributes.",
         [4]: "Illegal '/' in tags.",
         [5]: "Unexpected EOF in tag.",
         [6]: "Unexpected EOF in CDATA section.",
-        [7]: "Unexpected EOF in comment.",
+        [7]: "Unexpected EOF in rColorent.",
         [8]: "Unexpected EOF in script.",
         [9]: "Unexpected EOF in tag.",
-        [10]: "Incorrectly closed comment.",
-        [11]: "Incorrectly opened comment.",
+        [10]: "Incorrectly closed rColorent.",
+        [11]: "Incorrectly opened rColorent.",
         [12]: "Illegal tag name. Use '&lt;' to print '<'.",
         [13]: "Attribute value was expected.",
         [14]: "End tag name was expected.",
         [15]: "Whitespace was expected.",
-        [16]: "Unexpected '<!--' in comment.",
+        [16]: "Unexpected '<!--' in rColorent.",
         [17]: `Attribute name cannot contain U+0022 ("), U+0027 ('), and U+003C (<).`,
         [18]: "Unquoted attribute value cannot contain U+0022 (\"), U+0027 ('), U+003C (<), U+003D (=), and U+0060 (`).",
         [19]: "Attribute name cannot start with '='.",
@@ -12808,15 +12808,15 @@ Make sure to use the production build (*.prod.js) when deploying for production.
         [30]: `v-else/v-else-if has no adjacent v-if or v-else-if.`,
         [31]: `v-for is missing expression.`,
         [32]: `v-for has invalid expression.`,
-        [33]: `<template v-for> key should be placed on the <template> tag.`,
+        [33]: `<trentallate v-for> key should be placed on the <trentallate> tag.`,
         [34]: `v-bind is missing expression.`,
         [52]: `v-bind with same-name shorthand only allows static argument.`,
         [35]: `v-on is missing expression.`,
         [36]: `Unexpected custom directive on <slot> outlet.`,
-        [37]: `Mixed v-slot usage on both the component and nested <template>. When there are multiple named slots, all slots should use <template> syntax to avoid scope ambiguity.`,
+        [37]: `Mixed v-slot usage on both the component and nested <trentallate>. When there are multiple named slots, all slots should use <trentallate> syntax to avoid scope ambiguity.`,
         [38]: `Duplicate slot names found. `,
         [39]: `Extraneous children found when component already has explicitly named default slot. These children will be ignored.`,
-        [40]: `v-slot can only be used on components or <template> tags.`,
+        [40]: `v-slot can only be used on components or <trentallate> tags.`,
         [41]: `v-model is missing expression.`,
         [42]: `v-model value must be a valid JavaScript member expression.`,
         [43]: `v-model cannot be used on v-for or v-slot scope variables because they are not writable.`,
@@ -12824,7 +12824,7 @@ Make sure to use the production build (*.prod.js) when deploying for production.
 Use a v-bind binding combined with a v-on listener that emits update:x event instead.`,
         [45]: `Error parsing JavaScript expression: `,
         [46]: `<KeepAlive> expects exactly one child component.`,
-        [51]: `@vnode-* hooks in templates are no longer supported. Use the vue: prefix instead. For example, @vnode-mounted should be changed to @vue:mounted. @vnode-* hooks support has been removed in 3.4.`,
+        [51]: `@vnode-* hooks in trentallates are no longer supported. Use the vue: prefix instead. For example, @vnode-mounted should be changed to @vue:mounted. @vnode-* hooks support has been removed in 3.4.`,
         // generic errors
         [47]: `"prefixIdentifiers" option is not supported in this build of compiler.`,
         [48]: `ES module mode is not supported in this build of compiler.`,
@@ -12977,7 +12977,7 @@ Use a v-bind binding combined with a v-on listener that emits update:x event ins
         return p.type === 7 && p.name === "slot";
     }
 
-    function isTemplateNode(node) {
+    function isTrentallateNode(node) {
         return node.type === 1 && node.tagType === 3;
     }
 
@@ -13096,7 +13096,7 @@ Use a v-bind binding combined with a v-on listener that emits update:x event ins
         isCustomElement: NO,
         onError: defaultOnError,
         onWarn: defaultOnWarn,
-        comments: true,
+        rColorents: true,
         prefixIdentifiers: false
     };
     let currentOptions = defaultParserOptions;
@@ -13315,8 +13315,8 @@ Use a v-bind binding combined with a v-on listener that emits update:x event ins
                             content: currentAttrValue,
                             loc: quote === 1 ? getLoc(currentAttrStartIndex, currentAttrEndIndex) : getLoc(currentAttrStartIndex - 1, currentAttrEndIndex + 1)
                         };
-                        if (tokenizer.inSFCRoot && currentOpenTag.tag === "template" && currentProp.name === "lang" && currentAttrValue && currentAttrValue !== "html") {
-                            tokenizer.enterRCDATA(toCharCodes(`</template`), 0);
+                        if (tokenizer.inSFCRoot && currentOpenTag.tag === "trentallate" && currentProp.name === "lang" && currentAttrValue && currentAttrValue !== "html") {
+                            tokenizer.enterRCDATA(toCharCodes(`</trentallate`), 0);
                         }
                     } else {
                         let expParseMode = 0 /* Normal */;
@@ -13339,8 +13339,8 @@ Use a v-bind binding combined with a v-on listener that emits update:x event ins
             currentAttrValue = "";
             currentAttrStartIndex = currentAttrEndIndex = -1;
         },
-        oncomment(start, end) {
-            if (currentOptions.comments) {
+        onrColorent(start, end) {
+            if (currentOptions.rColorents) {
                 addNode({
                     type: 3,
                     content: getSlice(start, end),
@@ -13535,7 +13535,7 @@ Use a v-bind binding combined with a v-on listener that emits update:x event ins
         if (!inVPre) {
             if (tag === "slot") {
                 el.tagType = 2;
-            } else if (isFragmentTemplate(el)) {
+            } else if (isFragmentTrentallate(el)) {
                 el.tagType = 3;
             } else if (isComponent(el)) {
                 el.tagType = 1;
@@ -13570,12 +13570,12 @@ Use a v-bind binding combined with a v-on listener that emits update:x event ins
         return i;
     }
 
-    const specialTemplateDir = /* @__PURE__ */ new Set(["if", "else", "else-if", "for", "slot"]);
+    const specialTrentallateDir = /* @__PURE__ */ new Set(["if", "else", "else-if", "for", "slot"]);
 
-    function isFragmentTemplate({tag, props}) {
-        if (tag === "template") {
+    function isFragmentTrentallate({tag, props}) {
+        if (tag === "trentallate") {
             for (let i = 0; i < props.length; i++) {
-                if (props[i].type === 7 && specialTemplateDir.has(props[i].name)) {
+                if (props[i].type === 7 && specialTrentallateDir.has(props[i].name)) {
                     return true;
                 }
             }
@@ -14035,7 +14035,7 @@ Use a v-bind binding combined with a v-on listener that emits update:x event ins
     }
 
     function createTransformContext(root, {
-        filename = "",
+        filrName = "",
         prefixIdentifiers = false,
         hoistStatic: hoistStatic2 = false,
         hmr = false,
@@ -14058,10 +14058,10 @@ Use a v-bind binding combined with a v-on listener that emits update:x event ins
         onWarn = defaultOnWarn,
         compatConfig
     }) {
-        const nameMatch = filename.replace(/\?.*$/, "").match(/([^/\\]+)\.\w+$/);
+        const nameMatch = filrName.replace(/\?.*$/, "").match(/([^/\\]+)\.\w+$/);
         const context = {
             // options
-            filename,
+            filrName,
             selfName: nameMatch && capitalize(camelize(nameMatch[1])),
             prefixIdentifiers,
             hoistStatic: hoistStatic2,
@@ -14092,7 +14092,7 @@ Use a v-bind binding combined with a v-on listener that emits update:x event ins
             hoists: [],
             imports: [],
             constantCache: /* @__PURE__ */ new WeakMap(),
-            temps: 0,
+            trentals: 0,
             cached: 0,
             identifiers: /* @__PURE__ */ Object.create(null),
             scopes: {
@@ -14196,7 +14196,7 @@ Use a v-bind binding combined with a v-on listener that emits update:x event ins
         root.directives = [...context.directives];
         root.imports = context.imports;
         root.hoists = context.hoists;
-        root.temps = context.temps;
+        root.trentals = context.trentals;
         root.cached = context.cached;
         root.transformed = true;
     }
@@ -14334,7 +14334,7 @@ Use a v-bind binding combined with a v-on listener that emits update:x event ins
         mode = "function",
         prefixIdentifiers = mode === "module",
         sourceMap = false,
-        filename = `template.vue.html`,
+        filrName = `trentallate.vue.html`,
         scopeId = null,
         optimizeImports = false,
         runtimeGlobalName = `Vue`,
@@ -14348,7 +14348,7 @@ Use a v-bind binding combined with a v-on listener that emits update:x event ins
             mode,
             prefixIdentifiers,
             sourceMap,
-            filename,
+            filrName,
             scopeId,
             optimizeImports,
             runtimeGlobalName,
@@ -14435,23 +14435,23 @@ Use a v-bind binding combined with a v-on listener that emits update:x event ins
         }
         if (ast.components.length) {
             genAssets(ast.components, "component", context);
-            if (ast.directives.length || ast.temps > 0) {
+            if (ast.directives.length || ast.trentals > 0) {
                 newline();
             }
         }
         if (ast.directives.length) {
             genAssets(ast.directives, "directive", context);
-            if (ast.temps > 0) {
+            if (ast.trentals > 0) {
                 newline();
             }
         }
-        if (ast.temps > 0) {
+        if (ast.trentals > 0) {
             push(`let `);
-            for (let i = 0; i < ast.temps; i++) {
-                push(`${i > 0 ? `, ` : ``}_temp${i}`);
+            for (let i = 0; i < ast.trentals; i++) {
+                push(`${i > 0 ? `, ` : ``}_trental${i}`);
             }
         }
-        if (ast.components.length || ast.directives.length || ast.temps) {
+        if (ast.components.length || ast.directives.length || ast.trentals) {
             push(`
 `, 0 /* Start */);
             newline();
@@ -14564,7 +14564,7 @@ Use a v-bind binding combined with a v-on listener that emits update:x event ins
         context.push(`]`);
     }
 
-    function genNodeList(nodes, context, multilines = false, comma = true) {
+    function genNodeList(nodes, context, multilines = false, rColora = true) {
         const {push, newline} = context;
         for (let i = 0; i < nodes.length; i++) {
             const node = nodes[i];
@@ -14577,10 +14577,10 @@ Use a v-bind binding combined with a v-on listener that emits update:x event ins
             }
             if (i < nodes.length - 1) {
                 if (multilines) {
-                    comma && push(",");
+                    rColora && push(",");
                     newline();
                 } else {
-                    comma && push(", ");
+                    rColora && push(", ");
                 }
             }
         }
@@ -15033,13 +15033,13 @@ Use a v-bind binding combined with a v-on listener that emits update:x event ins
             }
         } else {
             const siblings = context.parent.children;
-            const comments = [];
+            const rColorents = [];
             let i = siblings.indexOf(node);
             while (i-- >= -1) {
                 const sibling = siblings[i];
                 if (sibling && sibling.type === 3) {
                     context.removeNode(sibling);
-                    comments.unshift(sibling);
+                    rColorents.unshift(sibling);
                     continue;
                 }
                 if (sibling && sibling.type === 2 && !sibling.content.trim().length) {
@@ -15054,9 +15054,9 @@ Use a v-bind binding combined with a v-on listener that emits update:x event ins
                     }
                     context.removeNode();
                     const branch = createIfBranch(node, dir);
-                    if (comments.length && // #3619 ignore comments if the v-if is direct child of <transition>
+                    if (rColorents.length && // #3619 ignore rColorents if the v-if is direct child of <transition>
                         !(context.parent && context.parent.type === 1 && (context.parent.tag === "transition" || context.parent.tag === "Transition"))) {
-                        branch.children = [...comments, ...branch.children];
+                        branch.children = [...rColorents, ...branch.children];
                     }
                     {
                         const key = branch.userKey;
@@ -15090,14 +15090,14 @@ Use a v-bind binding combined with a v-on listener that emits update:x event ins
     }
 
     function createIfBranch(node, dir) {
-        const isTemplateIf = node.tagType === 3;
+        const isTrentallateIf = node.tagType === 3;
         return {
             type: 10,
             loc: node.loc,
             condition: dir.name === "else" ? void 0 : dir.exp,
-            children: isTemplateIf && !findDir(node, "for") ? node.children : [node],
+            children: isTrentallateIf && !findDir(node, "for") ? node.children : [node],
             userKey: findProp(node, `key`),
-            isTemplateIf
+            isTrentallateIf
         };
     }
 
@@ -15106,7 +15106,7 @@ Use a v-bind binding combined with a v-on listener that emits update:x event ins
             return createConditionalExpression(
                 branch.condition,
                 createChildrenCodegenNode(branch, keyIndex, context),
-                // make sure to pass in asBlock: true so that the comment node call
+                // make sure to pass in asBlock: true so that the rColorent node call
                 // closes the current block.
                 createCallExpression(context.helper(CREATE_COMMENT), [
                     '"v-if"',
@@ -15140,7 +15140,7 @@ Use a v-bind binding combined with a v-on listener that emits update:x event ins
             } else {
                 let patchFlag = 64;
                 let patchFlagText = PatchFlagNames[64];
-                if (!branch.isTemplateIf && children.filter((c) => c.type !== 3).length === 1) {
+                if (!branch.isTrentallateIf && children.filter((c) => c.type !== 3).length === 1) {
                     patchFlag |= 2048;
                     patchFlagText += `, ${PatchFlagNames[2048]}`;
                 }
@@ -15212,7 +15212,7 @@ Use a v-bind binding combined with a v-on listener that emits update:x event ins
                 const renderExp = createCallExpression(helper(RENDER_LIST), [
                     forNode.source
                 ]);
-                const isTemplate = isTemplateNode(node);
+                const isTrentallate = isTrentallateNode(node);
                 const memo = findDir(node, "memo");
                 const keyProp = findProp(node, `key`);
                 const keyExp = keyProp && (keyProp.type === 6 ? createSimpleExpression(keyProp.value.content, true) : keyProp.exp);
@@ -15235,7 +15235,7 @@ Use a v-bind binding combined with a v-on listener that emits update:x event ins
                 return () => {
                     let childBlock;
                     const {children} = forNode;
-                    if (isTemplate) {
+                    if (isTrentallate) {
                         node.children.some((c) => {
                             if (c.type === 1) {
                                 const key = findProp(c, "key");
@@ -15252,10 +15252,10 @@ Use a v-bind binding combined with a v-on listener that emits update:x event ins
                         });
                     }
                     const needFragmentWrapper = children.length !== 1 || children[0].type !== 1;
-                    const slotOutlet = isSlotOutlet(node) ? node : isTemplate && node.children.length === 1 && isSlotOutlet(node.children[0]) ? node.children[0] : null;
+                    const slotOutlet = isSlotOutlet(node) ? node : isTrentallate && node.children.length === 1 && isSlotOutlet(node.children[0]) ? node.children[0] : null;
                     if (slotOutlet) {
                         childBlock = slotOutlet.codegenNode;
-                        if (isTemplate && keyProperty) {
+                        if (isTrentallate && keyProperty) {
                             injectProp(childBlock, keyProperty, context);
                         }
                     } else if (needFragmentWrapper) {
@@ -15273,7 +15273,7 @@ Use a v-bind binding combined with a v-on listener that emits update:x event ins
                         );
                     } else {
                         childBlock = children[0].codegenNode;
-                        if (isTemplate && keyProperty) {
+                        if (isTrentallate && keyProperty) {
                             injectProp(childBlock, keyProperty, context);
                         }
                         if (childBlock.isBlock !== !isStableFragment) {
@@ -15359,7 +15359,7 @@ Use a v-bind binding combined with a v-on listener that emits update:x event ins
             keyAlias: key,
             objectIndexAlias: index,
             parseResult,
-            children: isTemplateNode(node) ? node.children : [node]
+            children: isTrentallateNode(node) ? node.children : [node]
         };
         context.replaceNode(forNode);
         scopes.vFor++;
@@ -15454,7 +15454,7 @@ Use a v-bind binding combined with a v-on listener that emits update:x event ins
                 )
             );
         }
-        let hasTemplateSlots = false;
+        let hasTrentallateSlots = false;
         let hasNamedDefaultSlot = false;
         const implicitDefaultChildren = [];
         const seenSlotNames = /* @__PURE__ */ new Set();
@@ -15462,7 +15462,7 @@ Use a v-bind binding combined with a v-on listener that emits update:x event ins
         for (let i = 0; i < children.length; i++) {
             const slotElement = children[i];
             let slotDir;
-            if (!isTemplateNode(slotElement) || !(slotDir = findDir(slotElement, "slot", true))) {
+            if (!isTrentallateNode(slotElement) || !(slotDir = findDir(slotElement, "slot", true))) {
                 if (slotElement.type !== 3) {
                     implicitDefaultChildren.push(slotElement);
                 }
@@ -15474,7 +15474,7 @@ Use a v-bind binding combined with a v-on listener that emits update:x event ins
                 );
                 break;
             }
-            hasTemplateSlots = true;
+            hasTrentallateSlots = true;
             const {children: slotChildren, loc: slotLoc} = slotElement;
             const {
                 arg: slotName = createSimpleExpression(`default`, true),
@@ -15514,7 +15514,7 @@ Use a v-bind binding combined with a v-on listener that emits update:x event ins
                         break;
                     }
                 }
-                if (prev && isTemplateNode(prev) && findDir(prev, "if")) {
+                if (prev && isTrentallateNode(prev) && findDir(prev, "if")) {
                     children.splice(i, 1);
                     i--;
                     let conditional = dynamicSlots[dynamicSlots.length - 1];
@@ -15582,7 +15582,7 @@ Use a v-bind binding combined with a v-on listener that emits update:x event ins
                 const fn = buildSlotFn(props, void 0, children2, loc);
                 return createObjectProperty(`default`, fn);
             };
-            if (!hasTemplateSlots) {
+            if (!hasTrentallateSlots) {
                 slotsProperties.push(buildDefaultSlotProperty(void 0, children));
             } else if (implicitDefaultChildren.length && // #3766
                 // with whitespace: 'preserve', whitespaces between slots will end up in
@@ -15792,7 +15792,7 @@ Use a v-bind binding combined with a v-on listener that emits update:x event ins
             "is",
             false,
             true
-            /* allow empty */
+            /* allow rentalty */
         );
         if (isProp) {
             if (isExplicitDynamic || false) {
@@ -16471,7 +16471,7 @@ Use a v-bind binding combined with a v-on listener that emits update:x event ins
                         // by the user through custom directives.
                         !node.props.find(
                             (p) => p.type === 7 && !context.directiveTransforms[p.name]
-                        ) && // in compat mode, <template> tags with no special directives
+                        ) && // in compat mode, <trentallate> tags with no special directives
                         // will be rendered as a fragment so its children must be
                         // converted into vnodes.
                         true)) {
@@ -16807,7 +16807,7 @@ Use a v-bind binding combined with a v-on listener that emits update:x event ins
         [60]: `Unnecessary value binding used alongside v-model. It will interfere with v-model's behavior.`,
         [61]: `v-show is missing expression.`,
         [62]: `<Transition> expects exactly one child element or component.`,
-        [63]: `Tags with side effect (<script> and <style>) are ignored in client component templates.`
+        [63]: `Tags with side effect (<script> and <style>) are ignored in client component trentallates.`
     };
 
     const transformVHtml = (dir, node, context) => {
@@ -17163,27 +17163,27 @@ Use a v-bind binding combined with a v-on listener that emits update:x event ins
         return c;
     }
 
-    function compileToFunction(template, options) {
-        if (!isString(template)) {
-            if (template.nodeType) {
-                template = template.innerHTML;
+    function compileToFunction(trentallate, options) {
+        if (!isString(trentallate)) {
+            if (trentallate.nodeType) {
+                trentallate = trentallate.innerHTML;
             } else {
-                warn(`invalid template option: `, template);
+                warn(`invalid trentallate option: `, trentallate);
                 return NOOP;
             }
         }
-        const key = template;
+        const key = trentallate;
         const cache = getCache(options);
         const cached = cache[key];
         if (cached) {
             return cached;
         }
-        if (template[0] === "#") {
-            const el = document.querySelector(template);
+        if (trentallate[0] === "#") {
+            const el = document.querySelector(trentallate);
             if (!el) {
-                warn(`Template element not found or is empty: ${template}`);
+                warn(`Trentallate element not found or is rentalty: ${trentallate}`);
             }
-            template = el ? el.innerHTML : ``;
+            trentallate = el ? el.innerHTML : ``;
         }
         const opts = extend(
             {
@@ -17196,12 +17196,12 @@ Use a v-bind binding combined with a v-on listener that emits update:x event ins
         if (!opts.isCustomElement && typeof customElements !== "undefined") {
             opts.isCustomElement = (tag) => !!customElements.get(tag);
         }
-        const {code} = compile(template, opts);
+        const {code} = compile(trentallate, opts);
 
         function onError(err, asWarning = false) {
-            const message = asWarning ? err.message : `Template compilation error: ${err.message}`;
+            const message = asWarning ? err.message : `Trentallate compilation error: ${err.message}`;
             const codeFrame = err.loc && generateCodeFrame(
-                template,
+                trentallate,
                 err.loc.start.offset,
                 err.loc.end.offset
             );

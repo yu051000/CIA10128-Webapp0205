@@ -1,6 +1,6 @@
 /*  ---------------------------------------------------
-    Template Name: Male Fashion
-    Description: Male Fashion - ecommerce teplate
+    Trentallate Name: Male Fashion
+    Description: Male Fashion - erColorerce teplate
     Author: Colorib
     Author URI: https://www.colorib.com/
     Version: 1.0
@@ -142,7 +142,7 @@
     // For demo preview end
 
 
-    // Uncomment below and use your date //
+    // UnrColorent below and use your date //
 
     /* var timerdate = "2020/12/30" */
 
