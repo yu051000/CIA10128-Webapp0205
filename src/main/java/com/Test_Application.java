@@ -1,13 +1,13 @@
 package com;
 
-import com.yu.rental.entity.Rental;
 import com.yu.rental.dao.RentalRepository;
+import com.yu.rental.entity.Rental;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import java.util.Optional;
+import java.util.List;
 
 //	CommandLineRunner以String 陣列包裝參數； ApplicationRunner則是ApplicationArguments(有系統地取出資料內容)
 
@@ -47,23 +47,23 @@ public class Test_Application implements CommandLineRunner {
 //		Rental1.setrInfo(valueOf(1));
 ////		Rental2.setRentalCategory(Rental);
 //		repository.save(Rental2);
-
-    	//● 查詢-findByPrimaryKey (多方rental2.hbm.xml必須設為lazy="false")(優!)
-    	Optional<Rental> optional = repository.findById(5003);
-		Rental Rental3 = optional.get();
-		System.out.print(Rental3.getrNo() + ",");
-		System.out.print(Rental3.getrName() + ",");
-		System.out.print(Rental3.getrPrice() + ",");
-		System.out.print(Rental3.getrSize() + ",");
-		System.out.print(Rental3.getrColor() + ",");
-		System.out.print(Rental3.getrInfo() + ",");
+//
+//    	//● 查詢-findByPrimaryKey (多方rental2.hbm.xml必須設為lazy="false")(優!)
+//    	Optional<Rental> optional = repository.findById(5003);
+//		Rental Rental3 = optional.get();
+//		System.out.print(Rental3.getrNo() + ",");
+//		System.out.print(Rental3.getrName() + ",");
+//		System.out.print(Rental3.getrPrice() + ",");
+//		System.out.print(Rental3.getrSize() + ",");
+//		System.out.print(Rental3.getrColor() + ",");
+//		System.out.print(Rental3.getrInfo() + ",");
 //		// 注意以下三行的寫法 (優!)
-////		System.out.print(Rental3.getRental().getrCatNo() + ",");
-////		System.out.print(Rental3.getRental().getrCatName() + ",");
+////		System.out.print(Rental3.getrental().getrCatNo() + ",");
+////		System.out.print(Rental3.getrental().getrCatName() + ",");
 //		System.out.println("\n---------------------");
 
 
-		//● 查詢-getAll (多方rental2.hbm.xml必須設為lazy="false")(優!)
+//		//● 查詢-getAll (多方rental2.hbm.xml必須設為lazy="false")(優!)
 //    	List<Rental> list = repository.findAll();
 //		for (Rental aRental : list) {
 //			System.out.print(aRental.getrNo() + ",");
@@ -72,12 +72,11 @@ public class Test_Application implements CommandLineRunner {
 //			System.out.print(aRental.getrSize() + ",");
 //			System.out.print(aRental.getrColor() + ",");
 //			System.out.print(aRental.getrInfo() + ",");
-			// 注意以下三行的寫法 (優!)
-//			System.out.print(aRental.getRental().getrCatNo() + ",");
-//			System.out.print(aRental.getRental().getrCatName() + ",");
-//			System.out.print(aRental.getRental().getLoc());
+//			// 注意以下三行的寫法 (優!)
+////			System.out.print(aRental.getrental().getrCatNo() + ",");
+////			System.out.print(aRental.getrental().getrCatName() + ",");
 //			System.out.println();
-		}
+//		}
 
 
 //		//● 複合查詢-getAll(map) 配合 req.getParameterMap()方法 回傳 java.util.Map<java.lang.String,java.lang.String[]> 之測試
@@ -99,11 +98,11 @@ public class Test_Application implements CommandLineRunner {
 //			System.out.print(aRental.getrColor() + ",");
 //			System.out.print(aRental.getrInfo() + ",");
 //			// 注意以下三行的寫法 (優!)
-//			System.out.print(aRental.getRental().getrCatNo() + ",");
-//			System.out.print(aRental.getRental().getrCatName() + ",");
-//			System.out.print(aRental.getRental().getLoc());
+//			System.out.print(aRental.getrental().getrCatNo() + ",");
+//			System.out.print(aRental.getrental().getrCatName() + ",");
+//			System.out.print(aRental.getrental().getLoc());
 //			System.out.println();
 //		}
 
-//    }
+    }
 }
