@@ -2,98 +2,86 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>所有租借品資料 - listAllRental.html</title>
 
-    <head th:insert="~{/backend/rental/included-fragment}"></head>
-    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>                                    <!-- ●●js  for jquery datatables 用 -->
-    <script	src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>              <!-- ●●js  for jquery datatables 用 -->
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.5/css/dataTables.jqueryui.min.css" /> <!-- ●●css for jquery datatables 用 -->
-
-    <!-- ●● jquery datatables 設定 -->
-    <script>
-        $(document).ready(function() {
-            $('#example').DataTable({
-                "lengthMenu": [3 ,5, 10, 20, 50, 100],
-                "searching": true,  //搜尋功能, 預設是開啟
-                "paging": true,     //分頁功能, 預設是開啟
-                "ordering": true,   //排序功能, 預設是開啟
-                "language": {
-                    "processing": "處理中...",
-                    "loadingRecords": "載入中...",
-                    "lengthMenu": "顯示 _MENU_ 筆結果",
-                    "zeroRecords": "沒有符合的結果",
-                    "info": "顯示第 _START_ 至 _END_ 筆結果，共<font color=red> _TOTAL_ </font>筆",
-                    "infoEmpty": "顯示第 0 至 0 筆結果，共 0 筆",
-                    "infoFiltered": "(從 _MAX_ 筆結果中過濾)",
-                    "infoPostFix": "",
-                    "search": "搜尋:",
-                    "paginate": {
-                        "first": "第一頁",
-                        "previous": "上一頁",
-                        "next": "下一頁",
-                        "last": "最後一頁"
-                    },
-                    "aria": {
-                        "sortAscending":  ": 升冪排列",
-                        "sortDescending": ": 降冪排列"
-                    }
-                }
-            });
-        });
-    </script>
-    <style type="text/css">
-        body {
-            margin: 1rem 12rem 2rem 12rem;
+    <link rel="stylesheet" th:href="@{/css/backend/member/try.css}" />
+    <link rel="stylesheet" th:href="@{/css/backend/member/try2.css}" />
+    <link th:href="@{/css/backend/index/styles.css}" rel="stylesheet" />
+    <link th:href="@{/css/backend/index/index.css}" rel="stylesheet" />
+    <style>
+        h1 {
+            text-align: center;
+            color: red;
+        }
+        main {
+            margin-top: 50px;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            font-size: 2em;
+            border-radius: 10px;
+            width: 80%;
+            color: #fff;
+            background-color: #5bc0de;
+            padding: 20px;
+            margin: 0 auto;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.9);
         }
     </style>
 </head>
 <body>
-
-<nav class="navbar navbar-expand-md navbar-dark bg-success fixed-top justify-content-center">
-    <div align="center"> <h2>所有租借品資料 - listAllRental.html</h2>
-        <h3><a class="navbar-brand" th:href="@{/rental/select_page}">回查詢頁<label th:text="${success}"></label></a></h3></div>
-</nav>
-
-<table id="example" class="display" style="width: 100%">
-    <thead >
-    <tr style="background-color:#CCCCFF">
-        <th>計數</th>
-        <th>租借品編號</th>
-        <th>租借品名稱</th>
-        <th>租借品單價</th>
-        <th>租借品尺寸</th>
-        <th>租借品顏色</th>
-        <th>租借品資訊</th>
-        <th>租借品狀態</th>
-        <th>租借品類別編號</th>
-        <th>修改</th>
-        <th>刪除</th>
-    </tr>
-    </thead>
-
+<main>
+    <h1>所有租借品資料查詢</h1>
+    <table id="example" class="display" style="width: 100%;">
+        <thead>
+        <tr>
+            <th>租借品編號</th>
+            <th>租借品名稱</th>
+            <th>租借品單價</th>
+            <th>租借品尺寸</th>
+            <th>租借品顏色</th>
+            <th>租借品資訊</th>
+            <th>租借品狀態</th>
+            <th>租借品類別編號</th>
+            <th>修改</th>
+        </tr>
+        </thead>
     <tbody>
     <th:block th:each="rental : ${rentalListData}"> <!--th:block 用來包裝使用-->
         <tr>
-            <td th:text="${rentalStat.count}"></td>
             <td th:text="${rental.rNo}"></td>
             <td th:text="${rental.rName}"></td>
             <td th:text="${rental.rPrice}"></td>
             <td th:text="${rental.rSize}"></td>
             <td th:text="${rental.rColor}"></td>
             <td th:text="${rental.rInfo}"></td>
-            <td th:text="${rental.rStat}"></td>
+            <td>
+                <span th:if="${rental.rStat == 0}" th:text="上架"></span>
+                <span th:if="${rental.rStat == 1}" th:text="已預約"></span>
+                <span th:if="${rental.rStat == 2}" th:text="已租借"></span>
+                <span th:if="${rental.rStat == 3}" th:text="已歸還"></span>
+                <span th:if="${rental.rStat == 4}" th:text="清潔整理中"></span>
+                <span th:if="${rental.rStat == 5}" th:text="下架"></span>
+            </td>
             <td th:text="${rental.RentalCategory.rCatNo} + '-[' + ${rental.RentalCategory.rCatName} + ']'"></td>
             <td>
-                <form method="post" th:action="@{/rental/getOne_For_Update}" style="margin-bottom: 0px;">
-                    <input type="submit" value="修改">
-                    <input type="hidden" name="rNo" th:value="${rental.rNo}"></form>
-
+                <button th:onclick="'updateRental(' + ${rental.rNo} + ')'">修改</button>
             </td>
         </tr>
     </th:block>
     </tbody>
 </table>
-
+    <br>
+    <script th:src="@{/jquery/jquery-3.7.1.min.js}"></script>
+    <script th:src="@{/js/backend/member/the.js}"></script>
+    <script th:src="@{/js/backend/member/the2.js}"></script>
+    <script>
+        let table = new DataTable("#example");
+    </script>
+</main>
 </body>
 </html>
