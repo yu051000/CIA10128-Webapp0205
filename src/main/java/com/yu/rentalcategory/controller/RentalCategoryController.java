@@ -25,7 +25,7 @@
 //import com.yu.rentalcategory.model.RentalCategory;
 //import com.yu.rentalcategory.model.RentalCategoryService;
 //
-//@Controller
+//@RestController //包含@Controller功能，並於當前控制器的所有方法加入@ResponseBody功能。數據通過HttpServletResponse輸出給瀏覽器，請求方法。
 //@RequestMapping("/rentalcategory")
 //public class RentalCategoryController {
 //
