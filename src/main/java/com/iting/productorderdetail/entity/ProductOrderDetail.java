@@ -14,57 +14,55 @@ import java.math.BigDecimal;
 public class ProductOrderDetail {
     @EmbeddedId
     private CompositeDetail compositeKey;
-    @Column(name = "pprice")
-    private BigDecimal pPrice;
-    @Column(name = "pordqty")
-    private Integer pOrdQty;
-    @Column(name = "prealprice")
-    private BigDecimal pRealPrice;
-    @Column(name = "pcomcontent")
-    private String pComContent;
-    @Column(name = "pscore")
-    private Integer pScore;
+    @Column(name = "productprice")
+    private BigDecimal productPrice;
+    @Column(name = "productordqty")
+    private Integer productOrdQty;
+    @Column(name = "productrealprice")
+    private BigDecimal productRealPrice;
+    @Column(name = "productcomcontent")
+    private String productComContent;
+    @Column(name = "productscore")
+    private Integer productScore;
     @ManyToOne
     @JsonManagedReference
-    @JoinColumn(name = "pno", referencedColumnName = "pno", insertable = false, updatable = false)
+    @JoinColumn(name = "productno", referencedColumnName = "productno", insertable = false, updatable = false)
     private Product product;
     @ManyToOne
     @JsonManagedReference
-    @JoinColumn(name = "pordno", referencedColumnName = "pordno", insertable = false, updatable = false)
+    @JoinColumn(name = "productordno", referencedColumnName = "productordno", insertable = false, updatable = false)
     private ProductOrder productOrder ;
     // 需要宣告一個有包含複合主鍵屬性的類別，並一定實作 java.io.Serializable 介面
     @Embeddable
     public static class CompositeDetail implements Serializable {
         private static final long serialVersionUID = 1L;
-        @Column(name = "pordno", updatable = false)
-        private Integer pOrdNo;
-        @Column(name = "pno", updatable = false)
-        private Integer pNo;
+        @Column(name = "productordno", updatable = false)
+        private Integer productOrdNo;
+        @Column(name = "productno", updatable = false)
+        private Integer productNo;
 
         public CompositeDetail() {
-            super();
         }
 
-        public CompositeDetail(Integer pOrdNo, Integer pNo) {
-            super();
-            this.pOrdNo = pOrdNo;
-            this.pNo = pNo;
+        public CompositeDetail(Integer productOrdNo, Integer productNo) {
+            this.productOrdNo = productOrdNo;
+            this.productNo = productNo;
         }
 
-        public Integer getpOrdNo() {
-            return pOrdNo;
+        public Integer getProductOrdNo() {
+            return productOrdNo;
         }
 
-        public void setpOrdNo(Integer pOrdNo) {
-            this.pOrdNo = pOrdNo;
+        public void setProductOrdNo(Integer productOrdNo) {
+            this.productOrdNo = productOrdNo;
         }
 
-        public Integer getpNo() {
-            return pNo;
+        public Integer getProductNo() {
+            return productNo;
         }
 
-        public void setpNo(Integer pNo) {
-            this.pNo = pNo;
+        public void setProductNo(Integer productNo) {
+            this.productNo = productNo;
         }
 
         //一定要 override 此類別的 hashCode() 與 equals() 方法！
@@ -72,8 +70,8 @@ public class ProductOrderDetail {
         public int hashCode() {
             final int prime = 31;
             int result = 1;
-            result = prime * result + ((pOrdNo == null) ? 0 : pOrdNo.hashCode());
-            result = prime * result + ((pNo == null) ? 0 : pNo.hashCode());
+            result = prime * result + ((productOrdNo == null) ? 0 : productOrdNo.hashCode());
+            result = prime * result + ((productNo == null) ? 0 : productNo.hashCode());
             return result;
         }
 
@@ -84,7 +82,7 @@ public class ProductOrderDetail {
 
             if (obj != null && getClass() == obj.getClass()) {
                 CompositeDetail compositeKey = (CompositeDetail) obj;
-                if (pOrdNo.equals(compositeKey.pOrdNo) && pNo.equals(compositeKey.pNo)) {
+                if (productOrdNo.equals(compositeKey.productOrdNo) && productNo.equals(compositeKey.productNo)) {
                     return true;
                 }
             }
@@ -101,44 +99,44 @@ public class ProductOrderDetail {
         this.compositeKey = compositeKey;
     }
 
-    public BigDecimal getpPrice() {
-        return pPrice;
+    public BigDecimal getProductPrice() {
+        return productPrice;
     }
 
-    public void setpPrice(BigDecimal pPrice) {
-        this.pPrice = pPrice;
+    public void setProductPrice(BigDecimal productPrice) {
+        this.productPrice = productPrice;
     }
 
-    public Integer getpOrdQty() {
-        return pOrdQty;
+    public Integer getProductOrdQty() {
+        return productOrdQty;
     }
 
-    public void setpOrdQty(Integer pOrdQty) {
-        this.pOrdQty = pOrdQty;
+    public void setProductOrdQty(Integer productOrdQty) {
+        this.productOrdQty = productOrdQty;
     }
 
-    public BigDecimal getpRealPrice() {
-        return pRealPrice;
+    public BigDecimal getProductRealPrice() {
+        return productRealPrice;
     }
 
-    public void setpRealPrice(BigDecimal pRealPrice) {
-        this.pRealPrice = pRealPrice;
+    public void setProductRealPrice(BigDecimal productRealPrice) {
+        this.productRealPrice = productRealPrice;
     }
 
-    public String getpComContent() {
-        return pComContent;
+    public String getProductComContent() {
+        return productComContent;
     }
 
-    public void setpComContent(String pComContent) {
-        this.pComContent = pComContent;
+    public void setProductComContent(String productComContent) {
+        this.productComContent = productComContent;
     }
 
-    public Integer getpScore() {
-        return pScore;
+    public Integer getProductScore() {
+        return productScore;
     }
 
-    public void setpScore(Integer pScore) {
-        this.pScore = pScore;
+    public void setProductScore(Integer productScore) {
+        this.productScore = productScore;
     }
 
     public Product getProduct() {

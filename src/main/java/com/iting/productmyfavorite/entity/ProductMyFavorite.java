@@ -14,7 +14,7 @@ public class ProductMyFavorite {
     private CompositeProductMyFavorite compositeProductMyFavorite;
     @ManyToOne
     @JsonManagedReference
-    @JoinColumn(name = "pno", referencedColumnName = "pno", insertable = false, updatable = false)
+    @JoinColumn(name = "productno", referencedColumnName = "productno", insertable = false, updatable = false)
     private Product product;
     @ManyToOne
     @JsonManagedReference
@@ -23,17 +23,17 @@ public class ProductMyFavorite {
     @Embeddable
     public static class CompositeProductMyFavorite implements Serializable {
         private static final long serialVersionUID = 1L;
-        @Column(name = "pno")
-        private Integer pNo;
+        @Column(name = "productno")
+        private Integer productNo;
         @Column(name = "memno")
         private Integer memNo;
 
-        public Integer getpNo() {
-            return pNo;
+        public Integer getProductNo() {
+            return productNo;
         }
 
-        public void setpNo(Integer pNo) {
-            this.pNo = pNo;
+        public void setProductNo(Integer productNo) {
+            this.productNo = productNo;
         }
 
         public Integer getMemNo() {
@@ -48,7 +48,7 @@ public class ProductMyFavorite {
         public int hashCode() {
             final int prime = 31;
             int result = 1;
-            result = prime * result + ((pNo == null) ? 0 : pNo.hashCode());
+            result = prime * result + ((productNo == null) ? 0 : productNo.hashCode());
             result = prime * result + ((memNo == null) ? 0 : memNo.hashCode());
             return result;
         }
@@ -62,7 +62,7 @@ public class ProductMyFavorite {
 
             if (obj != null && getClass() == obj.getClass()) {
                 CompositeProductMyFavorite compositeProductMyFavorite = (CompositeProductMyFavorite) obj;
-                if (pNo.equals(compositeProductMyFavorite.pNo) && memNo.equals(compositeProductMyFavorite.memNo)) {
+                if (productNo.equals(compositeProductMyFavorite.productNo) && memNo.equals(compositeProductMyFavorite.memNo)) {
                     return true;
                 }
             }

@@ -6,8 +6,7 @@ import com.yu.rental.entity.Rental;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.sql.Date;
-import java.sql.Timestamp;
+import java.sql.*;
 import java.util.Objects;
 
 @Entity
@@ -17,16 +16,16 @@ public class RentalMyTrack implements Serializable {
     @Id
     @ManyToOne
     @JsonManagedReference
-    @JoinColumn(name = "rno", referencedColumnName = "rno")
+    @JoinColumn(name = "rentalno", referencedColumnName = "rentalno")
     private Rental rental;
     @Id
     @ManyToOne
     @JsonManagedReference
     @JoinColumn(name = "memno", referencedColumnName = "memno")
     private Member member;
-	@Column(name = "rtracktime")
-    private Timestamp rTrackTime;
-	@Column(name = "exprentaldate")
+    @Column(name = "rentaltracktime")
+    private Timestamp rentalTrackTime;
+    @Column(name = "exprentaldate")
     private Date expRentalDate;
 
     public Rental getRental() {
@@ -45,12 +44,12 @@ public class RentalMyTrack implements Serializable {
         this.member = member;
     }
 
-    public Timestamp getrTrackTime() {
-        return rTrackTime;
+    public Timestamp getRentalTrackTime() {
+        return rentalTrackTime;
     }
 
-    public void setrTrackTime(Timestamp rTrackTime) {
-        this.rTrackTime = rTrackTime;
+    public void setRentalTrackTime(Timestamp rentalTrackTime) {
+        this.rentalTrackTime = rentalTrackTime;
     }
 
     public Date getExpRentalDate() {
@@ -110,7 +109,7 @@ public class RentalMyTrack implements Serializable {
         return "RentalMyTrackVO{" +
                 "rental=" + rental +
                 ", member=" + member +
-                ", rTrackTime=" + rTrackTime +
+                ", rentalTrackTime=" + rentalTrackTime +
                 ", expRentalDate=" + expRentalDate +
                 '}';
     }

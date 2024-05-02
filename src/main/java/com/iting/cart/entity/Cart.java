@@ -12,32 +12,90 @@ import java.io.Serializable;
 public class Cart {
 
     @EmbeddedId
-    private CompositeDetail2 compositeKey2;
-    @Column(name = "pbuyqty")
-    private Integer pBuyQty;
+    private CompositeDetail compositeKey;
+    @Column(name = "productbuyqty")
+    private Integer productBuyQty;
     @ManyToOne
     @JsonManagedReference
     @JoinColumn(name = "memno", referencedColumnName = "memno", insertable = false, updatable = false)
     private Member member;
     @ManyToOne
     @JsonManagedReference
-    @JoinColumn(name = "pno", referencedColumnName = "pno", insertable = false, updatable = false)
+    @JoinColumn(name = "productno", referencedColumnName = "productno", insertable = false, updatable = false)
     private Product product;
 
-    public CompositeDetail2 getCompositeKey2() {
-        return compositeKey2;
+
+    @Embeddable
+    public static class CompositeDetail implements Serializable {
+        private static final long serialVersionUID = 1L;
+        @Column(name = "productno")
+        private Integer productNo;
+        @Column(name = "memno")
+        private Integer memNo;
+
+        public CompositeDetail() {
+
+        }
+
+        public CompositeDetail(Integer productNo, Integer memNo) {
+            this.productNo = productNo;
+            this.memNo = memNo;
+        }
+
+        public Integer getProductNo() {
+            return productNo;
+        }
+
+        public void setProductNo(Integer productNo) {
+            this.productNo = productNo;
+        }
+
+        public Integer getMemNo() {
+            return memNo;
+        }
+
+        public void setMemNo(Integer memNo) {
+            this.memNo = memNo;
+        }
+
+        @Override
+        public int hashCode() {
+            final int prime = 31;
+            int result = 1;
+            result = prime * result + ((productNo == null) ? 0 : productNo.hashCode());
+            result = prime * result + ((memNo == null) ? 0 : memNo.hashCode());
+            return result;
+        }
+        @Override
+        public boolean equals(Object obj) {
+            if (this == obj)
+                return true;
+
+            if (obj != null && getClass() == obj.getClass()) {
+                CompositeDetail compositeKey = (CompositeDetail) obj;
+                if (productNo.equals(compositeKey.productNo) && memNo.equals(compositeKey.memNo)) {
+                    return true;
+                }
+            }
+
+            return false;
+        }
     }
 
-    public void setCompositeKey2(CompositeDetail2 compositeKey2) {
-        this.compositeKey2 = compositeKey2;
+    public CompositeDetail getCompositeKey() {
+        return compositeKey;
     }
 
-    public Integer getpBuyQty() {
-        return pBuyQty;
+    public void setCompositeKey(CompositeDetail compositeKey) {
+        this.compositeKey = compositeKey;
     }
 
-    public void setpBuyQty(Integer pBuyQty) {
-        this.pBuyQty = pBuyQty;
+    public Integer getProductBuyQty() {
+        return productBuyQty;
+    }
+
+    public void setProductBuyQty(Integer productBuyQty) {
+        this.productBuyQty = productBuyQty;
     }
 
     public Member getMember() {
@@ -55,62 +113,4 @@ public class Cart {
     public void setProduct(Product product) {
         this.product = product;
     }
-
-    @Embeddable
-    public static class CompositeDetail2 implements Serializable {
-        private static final long serialVersionUID = 1L;
-        @Column(name = "pno")
-        private Integer pNo;
-        @Column(name = "memno")
-        private Integer memNo;
-
-
-        public CompositeDetail2(){
-            super();
-        }
-        public CompositeDetail2(Integer pNo,Integer memNo){
-            super();
-            this.pNo = pNo;
-            this.memNo = memNo;
-
-        }
-
-        public Integer getpNo() {
-            return pNo;
-        }
-        public void setpNo(Integer pNo) {
-            this.pNo = pNo;
-        }
-        public Integer getmemNo() {
-            return memNo;
-        }
-        public void setmemNo(Integer memNo) {
-            this.memNo = memNo;
-        }
-        @Override
-        public int hashCode() {
-            final int prime = 31;
-            int result = 1;
-            result = prime * result + ((pNo == null) ? 0 : pNo.hashCode());
-            result = prime * result + ((memNo == null) ? 0 : memNo.hashCode());
-            return result;
-        }
-        @Override
-        public boolean equals(Object obj) {
-            if (this == obj)
-                return true;
-
-            if (obj != null && getClass() == obj.getClass()) {
-               CompositeDetail2 compositeKey2 = (CompositeDetail2) obj;
-                if (pNo.equals(compositeKey2.pNo) && memNo.equals(compositeKey2.memNo)) {
-                    return true;
-                }
-            }
-
-            return false;
-        }
-    }
-
 }
-
-

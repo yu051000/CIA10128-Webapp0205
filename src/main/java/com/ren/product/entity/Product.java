@@ -17,30 +17,30 @@ import java.util.Set;
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "pno")
-    private Integer pNo;
+    @Column(name = "productno")
+    private Integer productNo;
     @ManyToOne
     @JsonManagedReference
-    @JoinColumn(name = "pcatno", referencedColumnName = "pcatno")
+    @JoinColumn(name = "productcatno", referencedColumnName = "productcatno")
     private ProductCategory productCategory;
-    @Column(name = "pname")
-    private String pName;
-    @Column(name = "pinfo")
-    private String pInfo;
-    @Column(name = "psize")
-    private Integer pSize;
-    @Column(name = "pcolor")
-    private String pColor;
-    @Column(name = "pprice")
-    private BigDecimal pPrice;
-    @Column(name = "pstat")
-    private Byte pStat;
-    @Column(name = "psalqty")
-    private Integer pSalQty;
-    @Column(name = "pcompeople")
-    private Integer pComPeople;
-    @Column(name = "pcomscore")
-    private Integer pComScore;
+    @Column(name = "productname")
+    private String productName;
+    @Column(name = "productinfo")
+    private String productInfo;
+    @Column(name = "productsize")
+    private Integer productSize;
+    @Column(name = "productcolor")
+    private String productColor;
+    @Column(name = "productprice")
+    private BigDecimal productPrice;
+    @Column(name = "productstat")
+    private Byte productStat;
+    @Column(name = "productsalqty")
+    private Integer productSalQty;
+    @Column(name = "productcompeople")
+    private Integer productComPeople;
+    @Column(name = "productcomscore")
+    private Integer productComScore;
     @JsonBackReference
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
     private Set<ProductOrderDetail> productOrderDetails;
@@ -55,44 +55,45 @@ public class Product {
     private Set<ProductPicture> productPictures;
 
     public Product() {
-
     }
 
-    // insert用建構子
-    public Product(ProductCategory productCategory, String pName, String pInfo, Integer pSize, String pColor, BigDecimal pPrice, Byte pStat, Integer pSalQty, Integer pComPeople, Integer pComScore) {
+    public Product(Integer productNo) {
+        this.productNo = productNo;
+    }
+
+    public Product(ProductCategory productCategory, String productName, String productInfo, Integer productSize, String productColor, BigDecimal productPrice, Byte productStat, Integer productSalQty, Integer productComPeople, Integer productComScore) {
         this.productCategory = productCategory;
-        this.pName = pName;
-        this.pInfo = pInfo;
-        this.pSize = pSize;
-        this.pColor = pColor;
-        this.pPrice = pPrice;
-        this.pStat = pStat;
-        this.pSalQty = pSalQty;
-        this.pComPeople = pComPeople;
-        this.pComScore = pComScore;
+        this.productName = productName;
+        this.productInfo = productInfo;
+        this.productSize = productSize;
+        this.productColor = productColor;
+        this.productPrice = productPrice;
+        this.productStat = productStat;
+        this.productSalQty = productSalQty;
+        this.productComPeople = productComPeople;
+        this.productComScore = productComScore;
     }
 
-    // Update用建構子
-    public Product(Integer pNo, ProductCategory productCategory, String pName, String pInfo, Integer pSize, String pColor, BigDecimal pPrice, Byte pStat, Integer pSalQty, Integer pComPeople, Integer pComScore) {
-        this.pNo = pNo;
+    public Product(Integer productNo, ProductCategory productCategory, String productName, String productInfo, Integer productSize, String productColor, BigDecimal productPrice, Byte productStat, Integer productSalQty, Integer productComPeople, Integer productComScore) {
+        this.productNo = productNo;
         this.productCategory = productCategory;
-        this.pName = pName;
-        this.pInfo = pInfo;
-        this.pSize = pSize;
-        this.pColor = pColor;
-        this.pPrice = pPrice;
-        this.pStat = pStat;
-        this.pSalQty = pSalQty;
-        this.pComPeople = pComPeople;
-        this.pComScore = pComScore;
+        this.productName = productName;
+        this.productInfo = productInfo;
+        this.productSize = productSize;
+        this.productColor = productColor;
+        this.productPrice = productPrice;
+        this.productStat = productStat;
+        this.productSalQty = productSalQty;
+        this.productComPeople = productComPeople;
+        this.productComScore = productComScore;
     }
 
-    public Integer getpNo() {
-        return pNo;
+    public Integer getProductNo() {
+        return productNo;
     }
 
-    public void setpNo(Integer pNo) {
-        this.pNo = pNo;
+    public void setProductNo(Integer productNo) {
+        this.productNo = productNo;
     }
 
     public ProductCategory getProductCategory() {
@@ -103,76 +104,76 @@ public class Product {
         this.productCategory = productCategory;
     }
 
-    public String getpName() {
-        return pName;
+    public String getProductName() {
+        return productName;
     }
 
-    public void setpName(String pName) {
-        this.pName = pName;
+    public void setProductName(String productName) {
+        this.productName = productName;
     }
 
-    public String getpInfo() {
-        return pInfo;
+    public String getProductInfo() {
+        return productInfo;
     }
 
-    public void setpInfo(String pInfo) {
-        this.pInfo = pInfo;
+    public void setProductInfo(String productInfo) {
+        this.productInfo = productInfo;
     }
 
-    public Integer getpSize() {
-        return pSize;
+    public Integer getProductSize() {
+        return productSize;
     }
 
-    public void setpSize(Integer pSize) {
-        this.pSize = pSize;
+    public void setProductSize(Integer productSize) {
+        this.productSize = productSize;
     }
 
-    public String getpColor() {
-        return pColor;
+    public String getProductColor() {
+        return productColor;
     }
 
-    public void setpColor(String pColor) {
-        this.pColor = pColor;
+    public void setProductColor(String productColor) {
+        this.productColor = productColor;
     }
 
-    public BigDecimal getpPrice() {
-        return pPrice;
+    public BigDecimal getProductPrice() {
+        return productPrice;
     }
 
-    public void setpPrice(BigDecimal pPrice) {
-        this.pPrice = pPrice;
+    public void setProductPrice(BigDecimal productPrice) {
+        this.productPrice = productPrice;
     }
 
-    public Byte getpStat() {
-        return pStat;
+    public Byte getProductStat() {
+        return productStat;
     }
 
-    public void setpStat(Byte pStat) {
-        this.pStat = pStat;
+    public void setProductStat(Byte productStat) {
+        this.productStat = productStat;
     }
 
-    public Integer getpSalQty() {
-        return pSalQty;
+    public Integer getProductSalQty() {
+        return productSalQty;
     }
 
-    public void setpSalQty(Integer pSalQty) {
-        this.pSalQty = pSalQty;
+    public void setProductSalQty(Integer productSalQty) {
+        this.productSalQty = productSalQty;
     }
 
-    public Integer getpComPeople() {
-        return pComPeople;
+    public Integer getProductComPeople() {
+        return productComPeople;
     }
 
-    public void setpComPeople(Integer pComPeople) {
-        this.pComPeople = pComPeople;
+    public void setProductComPeople(Integer productComPeople) {
+        this.productComPeople = productComPeople;
     }
 
-    public Integer getpComScore() {
-        return pComScore;
+    public Integer getProductComScore() {
+        return productComScore;
     }
 
-    public void setpComScore(Integer pComScore) {
-        this.pComScore = pComScore;
+    public void setProductComScore(Integer productComScore) {
+        this.productComScore = productComScore;
     }
 
     public Set<ProductOrderDetail> getProductOrderDetails() {

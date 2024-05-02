@@ -13,8 +13,8 @@ public interface RentalRepository extends JpaRepository<Rental, Integer> {
      * 注意：JpaRepository的泛型為 <T,ID>，所以在使用繼承時，必須定義好 T 與 ID 的型別，也就是 <MemberDTO, Long>。
      */
     @Transactional
-    public Rental findByrNo(Integer rNo);
+    public Rental findByRentalNo(Integer rentalNo);
 
     @Transactional
-    public Rental findByrName(String rName);
+    public Rental findByRentalName(String rentalName);
 }

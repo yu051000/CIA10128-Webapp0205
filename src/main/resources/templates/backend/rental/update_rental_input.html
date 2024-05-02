@@ -47,43 +47,43 @@
     <form th:action="@{update}" method="post" th:object="${rental}" enctype="multipart/form-data">
         <div>
             <label>租借品編號:</label> <!--設為readonly，唯讀不可更改-->
-            <input type="text" th:field="*{rNo}" style="border:0px ; font-weight: bold;" readonly /><br/>
+            <input type="text" th:field="*{rental.rentalNo}" style="border:0px ; font-weight: bold;" readonly /><br/>
         </div>
 
         <div>
             <label>租借品名稱:</label>
-            <select th:field="*{rName}">
+            <select th:field="*{rental.rentalName}">
                 <option value="請選擇">
-                <option th:each="rental : ${rentalListData}" th:value="${rental.rNo}" th:text="${rental.rName}" />
+                <option th:each="rental : ${rentalListData}" th:value="${rental.rentalNo}" th:text="${rental.rentalName}" />
             </select>
-            <span  th:if="${#fields.hasErrors('rName')}" th:errors="*{rName}" class="error" id="rName.errors"></span>
+            <span  th:if="${#fields.hasErrors('rentalName')}" th:errors="*{rental.rentalName}" class="error" id="rentalName.errors"></span>
         </div>
 
         <div>
             <label>租借品尺寸:</label>
-            <select th:field="*{rSize}">
+            <select th:field="*{rental.rentalSize}">
                 <option value="請選擇">
-                <option th:each="rental : ${rentalListData}" th:value="${rental.rNo}" th:text="${rental.rSize}" />
+                <option th:each="rental : ${rentalListData}" th:value="${rental.rentalNo}" th:text="${rental.rentalSize}" />
             </select>
-            <span  th:if="${#fields.hasErrors('rSize')}" th:errors="*{rSize}" class="error" id="rSize.errors"></span>
+            <span  th:if="${#fields.hasErrors('rentalSize')}" th:errors="*{rental.rentalSize}" class="error" id="rentalSize.errors"></span>
         </div>
 
         <div>
             <label>租借品顏色:</label>
-            <select th:field="*{rColor}">
+            <select th:field="*{rental.rentalColor}">
                 <option value="請選擇">
-                <option th:each="rental : ${rentalListData}" th:value="${rental.rNo}" th:text="${rental.rColor}" />
+                <option th:each="rental : ${rentalListData}" th:value="${rental.rentalNo}" th:text="${rental.rentalColor}" />
             </select>
-            <span  th:if="${#fields.hasErrors('rColor')}" th:errors="*{rColor}" class="error" id="rColor.errors"></span>
+            <span  th:if="${#fields.hasErrors('rentalColor')}" th:errors="*{rental.rentalColor}" class="error" id="rentalColor.errors"></span>
         </div>
 
         <div>
             <label>租借品狀態:</label>
-            <select th:field="*{rental.rStat}">
+            <select th:field="*{rental.rentalStat}">
                 <option value="請選擇">
-                <option th:each="rental : ${rentalListData}" th:value="${rental.rNo}" th:text="${rental.rStat}" />
+                <option th:each="rental : ${rentalListData}" th:value="${rental.rentalNo}" th:text="${rental.rentalStat}" />
             </select>
-            <span  th:if="${#fields.hasErrors('rStat')}" th:errors="*{rStat}" class="error" id="rStat.errors"></span>
+            <span  th:if="${#fields.hasErrors('rentalStat')}" th:errors="*{rental.rentalStat}" class="error" id="rentalStat.errors"></span>
         </div>
 
         <div>

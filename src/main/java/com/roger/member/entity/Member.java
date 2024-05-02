@@ -28,16 +28,16 @@ public class Member implements java.io.Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY) // 設置自動增長鍵
     @Column(name = "memno") // 映射到資料庫中的column的memNo
     private Integer memNo;
-    @Column(name = "mname")
-    private String mName;
+    @Column(name = "memname")
+    private String memName;
     @Column(name = "memacc", unique = true) //`unique` 屬性設置為 `true`，表示該列應該具有唯一性約束。這意味著數據庫中的每一個 `memAcc` 值都必須是唯一的，不能有重複的值。
     private String memAcc;
     @Column(name = "mempwd")
     private String memPwd;
     @Column(name = "memmob", unique = true)
     private String memMob;
-    @Column(name = "mgender")
-    private Byte mGender;
+    @Column(name = "memgender")
+    private Byte memGender;
     @Column(name = "memmail", unique = true)
     private String memMail;
     @Column(name = "memadd")
@@ -113,13 +113,13 @@ public class Member implements java.io.Serializable {
     public Member() {
     }
 
-    public Member(Integer memNo, String mName, String memAcc, String memPwd, String memMob, Byte mGender, String memMail, String memAdd, Date memBd, String memCard, Byte provider, String clientID, String displayName, String accessToken, String refreshToken, Timestamp tknExpireTime, Timestamp creationTime, Timestamp memberJoinTime, Byte memStat, String memSalt, Set<Notice> notices, Set<MyCoupon> myCoupons, Set<ProductOrder> productOrders, Set<ProductMyFavorite> productMyFavorites, Set<Cart> carts, Set<ClickLike> clickLikes, Set<ArticleCollection> articleCollections, Set<Report> reports, Set<ColumnReply> columnReplies, Set<RentalOrder> rentalOrders, Set<RentalMyTrack> rentalMyTracks, Set<RentalMyFavorite> rentalMyFavorites, Set<StudioOrder> studioOrders, Set<ServiceRecord> serviceRecords) {
+    public Member(Integer memNo, String memName, String memAcc, String memPwd, String memMob, Byte memGender, String memMail, String memAdd, Date memBd, String memCard, Byte provider, String clientID, String displayName, String accessToken, String refreshToken, Timestamp tknExpireTime, Timestamp creationTime, Timestamp memberJoinTime, Byte memStat, String memSalt, Set<Notice> notices, Set<MyCoupon> myCoupons, Set<ProductOrder> productOrders, Set<ProductMyFavorite> productMyFavorites, Set<Cart> carts, Set<ClickLike> clickLikes, Set<ArticleCollection> articleCollections, Set<Report> reports, Set<ColumnReply> columnReplies, Set<RentalOrder> rentalOrders, Set<RentalMyTrack> rentalMyTracks, Set<RentalMyFavorite> rentalMyFavorites, Set<StudioOrder> studioOrders, Set<ServiceRecord> serviceRecords) {
         this.memNo = memNo;
-        this.mName = mName;
+        this.memName = memName;
         this.memAcc = memAcc;
         this.memPwd = memPwd;
         this.memMob = memMob;
-        this.mGender = mGender;
+        this.memGender = memGender;
         this.memMail = memMail;
         this.memAdd = memAdd;
         this.memBd = memBd;
@@ -158,12 +158,12 @@ public class Member implements java.io.Serializable {
         this.memNo = memNo;
     }
 
-    public String getmName() {
-        return mName;
+    public String getMemName() {
+        return memName;
     }
 
-    public void setmName(String mName) {
-        this.mName = mName;
+    public void setMemName(String memName) {
+        this.memName = memName;
     }
 
     public String getMemAcc() {
@@ -190,12 +190,12 @@ public class Member implements java.io.Serializable {
         this.memMob = memMob;
     }
 
-    public Byte getmGender() {
-        return mGender;
+    public Byte getMemGender() {
+        return memGender;
     }
 
-    public void setmGender(Byte mGender) {
-        this.mGender = mGender;
+    public void setMemGender(Byte memGender) {
+        this.memGender = memGender;
     }
 
     public String getMemMail() {

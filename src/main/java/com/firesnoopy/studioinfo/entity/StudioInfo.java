@@ -13,14 +13,14 @@ import java.util.Set;
 @Table(name = "studioinfo")
 public class StudioInfo {
     @Id
-    @Column(name = "sno")
-    private Integer sNo;
-    @Column(name = "sname")
-    private String sName;
-    @Column(name = "sinfo")
-    private String sInfo;
-    @Column(name = "sprice")
-    private BigDecimal sPrice;
+    @Column(name = "studiono")
+    private Integer studioNo;
+    @Column(name = "studioname")
+    private String studioName;
+    @Column(name = "studioinfo")
+    private String studioInfo;
+    @Column(name = "studioprice")
+    private BigDecimal studioPrice;
     @JsonBackReference
     @OneToMany(mappedBy = "studioInfo", cascade = CascadeType.ALL)
     private Set<StudioOrder> studioOrders;
@@ -28,36 +28,56 @@ public class StudioInfo {
     @OneToMany(mappedBy = "studioInfo", cascade = CascadeType.ALL)
     private Set<StudioTimeBooking> studioTimeBookings;
 
-    public Integer getsNo() {
-        return sNo;
+    public StudioInfo() {
     }
 
-    public void setsNo(Integer sNo) {
-        this.sNo = sNo;
+    public StudioInfo(Integer studioNo) {
+        this.studioNo = studioNo;
     }
 
-    public String getsName() {
-        return sName;
+    public StudioInfo(String studioName, String studioInfo, BigDecimal studioPrice) {
+        this.studioName = studioName;
+        this.studioInfo = studioInfo;
+        this.studioPrice = studioPrice;
     }
 
-    public void setsName(String sName) {
-        this.sName = sName;
+    public StudioInfo(Integer studioNo, String studioName, String studioInfo, BigDecimal studioPrice) {
+        this.studioNo = studioNo;
+        this.studioName = studioName;
+        this.studioInfo = studioInfo;
+        this.studioPrice = studioPrice;
     }
 
-    public String getsInfo() {
-        return sInfo;
+    public Integer getStudioNo() {
+        return studioNo;
     }
 
-    public void setsInfo(String sInfo) {
-        this.sInfo = sInfo;
+    public void setStudioNo(Integer studioNo) {
+        this.studioNo = studioNo;
     }
 
-    public BigDecimal getsPrice() {
-        return sPrice;
+    public String getStudioName() {
+        return studioName;
     }
 
-    public void setsPrice(BigDecimal sPrice) {
-        this.sPrice = sPrice;
+    public void setStudioName(String studioName) {
+        this.studioName = studioName;
+    }
+
+    public String getStudioInfo() {
+        return studioInfo;
+    }
+
+    public void setStudioInfo(String studioInfo) {
+        this.studioInfo = studioInfo;
+    }
+
+    public BigDecimal getStudioPrice() {
+        return studioPrice;
+    }
+
+    public void setStudioPrice(BigDecimal studioPrice) {
+        this.studioPrice = studioPrice;
     }
 
     public Set<StudioOrder> getStudioOrders() {
