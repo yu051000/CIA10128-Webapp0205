@@ -10,31 +10,31 @@ import javax.persistence.*;
 public class RentalPic {
 
     @Id //標示為PK
-    @Column(name="rpicno", nullable=false)
-    private Integer rPicNo;
+    @Column(name="rentalpicno", nullable=false)
+    private Integer rentalPicNo;
 
-    @Column(name="rpic", columnDefinition = "longblob")
-    private byte[] rPic;
+    @Column(name="rentalpic", columnDefinition = "longblob")
+    private byte[] rentalPic;
 
     @ManyToOne
     @JsonManagedReference
-    @JoinColumn(name="rno", referencedColumnName="rno")
+    @JoinColumn(name="rentalno", referencedColumnName="rentalno")
     private Rental rental;
 
-    public Integer getrPicNo() {
-        return rPicNo;
+    public Integer getRentalPicNo() {
+        return rentalPicNo;
     }
 
-    public void setrPicNo(Integer rPicNo) {
-        this.rPicNo = rPicNo;
+    public void setRentalPicNo(Integer rentalPicNo) {
+        this.rentalPicNo = rentalPicNo;
     }
 
-    public byte[] getrPic() {
-        return rPic;
+    public byte[] getRentalPic() {
+        return rentalPic;
     }
 
-    public void setrPic(byte[] rPic) {
-        this.rPic = rPic;
+    public void setRentalPic(byte[] rentalPic) {
+        this.rentalPic = rentalPic;
     }
 
     public Rental getRental() {

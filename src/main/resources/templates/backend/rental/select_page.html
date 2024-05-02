@@ -1,156 +1,125 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>租借品資料管理 - select_page.html</title>
+    <head th:insert="~{backend/component/plugin/backendplugin.html :: css}">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <!-- Custom styles for this page -->
+        <link th:href="@{/backend/vendor/datatables/dataTables.bootstrap4.min.css}" rel="stylesheet" />
+    </head>
 
-    <head th:insert="~{/backend/rental/included-fragment}"></head> <!-- 使用included-fragment.html網頁的全部 -->
-    <style type="text/css">
+    <body id="page-top">
+        <!-- Page Wrapper -->
+        <div id="wrapper">
+            <!-- Sidebar -->
+            <ul th:replace="backend/component/sidebar :: sidebar"></ul>
+            <!-- End of Sidebar -->
+            <!-- Content Wrapper -->
+            <div id="content-wrapper" class="d-flex flex-column">
+                <!-- Main Content -->
+                <div id="content">
+                    <!-- Topbar -->
+                    <nav th:replace="backend/component/nav :: nav"></nav>
+                    <!-- End of Topbar -->
+                    <!-- Begin Page Content -->
+                    <div class="container-fluid">
+                        <div th:replace="backend/component/breadcrumb :: breadcrumb"></div>
+                        <nav class="navbar navbar-expand-md navbar-dark bg-success fixed-top justify-content-center">
+                            <div align="center"> <h2>租借品資料管理 - select_page.html</h2>
+                                <h3><a class="navbar-brand" th:href="@{/}">回index.html</a></h3>
+                            </div>
+                        </nav>
 
-        button {
-            padding: 5px;
-        }
-        form {
-            display: table;
-        }
-        form div {
-            display: table-row;
-        }
-        label, input, span, select {
-            display: table-cell;
-            margin: 2px;
-            text-align: left;
-        }
-        input[type=text], input[type=password], select, textarea {
-            width: 200px;
-            margin: 2px;
-        }
-        form div div {
-            display: table-cell;
-        }
-        .center {
-            margin-left: auto;
-            margin-right: auto;
-        }
-        span {
-            display: inline-block;
-            width: 150px;
-            text-align: left;
-            font-weight: bold;
-        }
-        div.a {
-            display: inline-block;
-            width: 50%;
-            height: auto;
-            padding: 5px;
-            border: 0px solid blue;
-            background-color: white;
-        }
-        div.b {
-            position: absolute;
-            bottom: 1%;
-            right: 2%;
-            width: 45%;
-            padding: 5px;
-            border: 1px solid blue;
-        }
-    </style>
-</head>
-<body>
+                        <h4><span>資料查詢:</span></h4>
 
-<nav class="navbar navbar-expand-md navbar-dark bg-success fixed-top justify-content-center">
-    <div align="center"> <h2>租借品資料管理 - select_page.html</h2>
-        <h3><a class="navbar-brand" th:href="@{/}">回index.html</a></h3></div>
-</nav>
+                        <!-- 錯誤表列 -->
+                        <div class="errorblock" th:utext="${errorMessage}">${errorMessage}</div><br>
+                        <div class="a">
+                            <ul>
+                                <li><h5><a href='listAllRental'>所有租借品資料</a><br><br></h5></li>
 
-<h4><span>資料查詢:</span></h4>
-<!-- 錯誤表列 -->
-<div class="errorblock" th:utext="${errorMessage}">${errorMessage}</div><br>
-<div class="a">
-    <ul>
-        <li><h5><a href='listAllRental'>所有租借品資料</a><br><br></h5></li>
+                                <li>
+                                    <form method="post" th:action="@{getOne_For_Display}">
+                                        選擇租借品編號:
+                                        <select name="rentalNo">
+                                            <option th:each="rental : ${rentalData}" th:value="${rental.rentalNo}" th:text="${rental.rentalNo}" />
+                                        </select>
+                                        <input type="submit" value="送出">
+                                    </form><br>
+                                </li>
 
-<!--        <li>-->
-<!--            <form method="post" th:action="@{getOne_For_Display}">-->
-<!--                輸入租借品編號 (ex. 5001):-->
-<!--                <input type="text" name="rNo" th:value="${param.rNo}" >-->
-<!--                <input type="submit" value="送出">-->
-<!--            </form><br>-->
-<!--        </li>-->
-        <li><form method="post" th:action="@{getOne_For_Display}">
-            選擇租借品編號:
-            <select name="rNo">
-                <option th:each="rental : ${rentalListData}" th:value="${rental.rNo}" th:text="${rental.rNo}" />
-            </select>
-            <input type="submit" value="送出">
-        </form><br>
-        </li>
+                                <li>
+                                    <form method="post" th:action="@{getOne_For_Display}">
+                                        選擇租借品名稱:
+                                        <select name="rentalNo">
+                                            <option th:each="rental : ${rentalData}" th:value="${rental.rentalNo}" th:text="${rental.rentalName}" />
+                                        </select>
+                                        <input type="submit" value="送出">
+                                    </form><br>
+                                </li>
 
+                                <!--  萬用複合查詢(開始)  -->
+                                <li>
+                                    <form method="post" th:action="@{listRentalsByCompositeQuery}">
+                                        <font color=blue>萬用複合查詢:</font><br>
+                                        選擇租借品編號 (ex. 5001):
+                                        <select th:field="*{rental.rentalNo}">
+                                            <option th:each="rental : ${rentalData}" th:value="${rental.rentalNo}" th:text="${rental.rentalName}" />
+                                        </select><br>
 
+                                        選擇租借品名稱:
+                                        <select th:field="*{rental.rentalName}">
+                                            <option th:each="rental : ${rentalData}" th:value="${rental.rentalNo}" th:text="${rental.rentalName}" />
+                                        </select><br>
 
+                                        選擇租借品尺寸:
+                                        <select th:field="*{rental.rentalSize}">
+                                            <option th:each="rental : ${rentalData}" th:value="${rental.rentalNo}" th:text="${rental.rentalSize}" />
+                                        </select><br>
 
-        <li><form method="post" th:action="@{getOne_For_Display}">
-            選擇租借品名稱:
-            <select name="rNo">
-                <option th:each="rental : ${rentalListData}" th:value="${rental.rNo}" th:text="${rental.rName}" />
-            </select>
-            <input type="submit" value="送出">
-        </form><br>
-        </li>
+                                        選擇租借品顏色:
+                                        <select th:field="*{rental.rentalColor}">
+                                            <option th:each="rental : ${rentalData}" th:value="${rental.rentalNo}" th:text="${rental.rentalColor}" />
+                                        </select><br>
 
+                                        選擇租借品狀態:
+                                        <select th:field="*{rental.rentalStat}">
+                                            <option th:each="rental : ${rentalData}" th:value="${rental.rentalNo}" th:text="${rental.rentalStat}" />
+                                        </select><br>
 
+                                        選擇租借品類別編號:
+                                        <select th:field="*{RentalCategory.rCatNo}">
+                                            <option th:each="RentalCategory : ${rentalCategoryListData}" th:value="${RentalCategory.rCatNo}" th:text="${RentalCategory.rCatNo}" />
+                                        </select><br>
+                                    </form>
+                                </li>
+                                <!--  萬用複合查詢(結束)  -->
+                            </ul>
+                            <h4><span>租借品管理</span></h4>
+                            <li><a th:href="@{listAllRental}">List</a> all Rentals. <br> <br></li>
+                        </div>
+                    <!-- /.container-fluid -->
+                    </div>
+                    <!-- End of Main Content -->
 
+                    <!-- Footer -->
+                    <footer th:replace="backend/component/bottom :: bottom"></footer>
+                    <!-- End of Footer -->
+                </div>
+            <!-- End of Content Wrapper -->
+            </div>
+        <!-- End of Page Wrapper -->
+        </div>
+        <!-- Scroll to Top Button-->
+        <a th:replace="backend/component/scrolltotop :: scrolltotop"></a>
+        <!-- Logout Modal-->
+        <div th:replace="backend/component/logout :: logout"></div>
 
-        <!--  萬用複合查詢-以下欄位-可隨意增減 -->
-        <li>
-            <form method="post" th:action="@{listRentals_ByCompositeQuery}">
-                <font color=blue>萬用複合查詢:</font><br>
-                選擇租借品編號 (ex. 5001):
-                <select th:field="*{rental.rNo}">
-                    <option th:each="rental : ${rentalListData}" th:value="${rental.rNo}" th:text="${rental.rName}" />
-                </select><br>
-
-                選擇租借品名稱:
-                <select th:field="*{rental.rName}">
-                    <option th:each="rental : ${rentalListData}" th:value="${rental.rNo}" th:text="${rental.rName}" />
-                </select><br>
-
-                選擇租借品尺寸:
-                <select th:field="*{rental.rSize}">
-                    <option th:each="rental : ${rentalListData}" th:value="${rental.rNo}" th:text="${rental.rSize}" />
-                </select><br>
-
-                選擇租借品顏色:
-                <select th:field="*{rental.rColor}">
-                    <option th:each="rental : ${rentalListData}" th:value="${rental.rNo}" th:text="${rental.rColor}" />
-                </select><br>
-
-                選擇租借品狀態:
-                <select th:field="*{rental.rStat}">
-                    <option th:each="rental : ${rentalListData}" th:value="${rental.rNo}" th:text="${rental.rStat}" />
-                </select><br>
-
-                選擇租借品類別編號:
-                <select th:field="*{RentalCategory.rCatNo}">
-                    <option th:each="RentalCategory : ${rentalCategoryListData}" th:value="${RentalCategory.rCatNo}" th:text="${RentalCategory.rCatNo}" />
-                </select><br>
-
-            </form>
-        </li>
-    </ul>
-
-    <h4><span>租借品管理</span></h4>
-    <ul>
-        <li><h5><a href='addRental'>Add</a> a new Rental.</h5></li>
-    </ul>
-</div>
-
-<!-- 旗標getOne_For_Display見EmpnoController.java的第74行 -->
-<div class="b" th:if="${getOne_For_Display}">
-    <!--使用listOneEmp.html網頁的listOneEmp-div片段--> <!-- 見listOneEmp.html的第35行的th:fragment="listOneEmp-div" --> <!-- 使用th:replace也可 -->
-    <div th:insert="~{/backend/rental/listOneRental :: listOneRental-div}"></div>
-</div>
-
-</body>
+        <th:block th:insert="~{backend/component/plugin/backendplugin.html :: js}"></th:block>
+        <!-- Page level plugins -->
+        <script th:src="@{/backend/vendor/datatables/jquery.dataTables.min.js}"></script>
+        <script th:src="@{/backend/vendor/datatables/dataTables.bootstrap4.min.js}"></script>
+        <!-- Page level custom scripts -->
+        <script th:src="@{/backend/js/demo/datatables-demo.js}"></script>
+    </body>
 </html>

@@ -12,62 +12,62 @@ import java.util.Set;
 public class RentalCategory {
 
     @Id //標示此為Pk
-    @Column(name="rcatno")
-    private Integer rCatNo;
+    @Column(name="rentalcatno")
+    private Integer rentalCatNo;
 
-    @Column(name="rcatname", length=40)
-    private String rCatName;
+    @Column(name="rentalcatname", length=40)
+    private String rentalCatName;
 
-    @Column(name="rstockqty")
-    private Integer rStockQty;
+    @Column(name="rentalstockqty")
+    private Integer rentalStockQty;
 
-    @Column(name="rrentedqty")
-    private Integer rRentedQty;
+    @Column(name="rentalrentedqty")
+    private Integer rentalRentedQty;
 
-    @Column(name="rdesprice",columnDefinition="BigDecimal")
-    private BigDecimal rDesPrice;
+    @Column(name="rentaldesprice",columnDefinition="BigDecimal")
+    private BigDecimal rentalDesPrice;
     @JsonBackReference
     @OneToMany(mappedBy = "rentalCategory", cascade = CascadeType.ALL) //CascadeType.ALL把對應到的相關資料刪除
     private Set<Rental> rentals;
 
-    public Integer getrCatNo() {
-        return rCatNo;
+    public Integer getRentalCatNo() {
+        return rentalCatNo;
     }
 
-    public void setrCatNo(Integer rCatNo) {
-        this.rCatNo = rCatNo;
+    public void setRentalCatNo(Integer rentalCatNo) {
+        this.rentalCatNo = rentalCatNo;
     }
 
-    public String getrCatName() {
-        return rCatName;
+    public String getRentalCatName() {
+        return rentalCatName;
     }
 
-    public void setrCatName(String rCatName) {
-        this.rCatName = rCatName;
+    public void setRentalCatName(String rentalCatName) {
+        this.rentalCatName = rentalCatName;
     }
 
-    public Integer getrStockQty() {
-        return rStockQty;
+    public Integer getRentalStockQty() {
+        return rentalStockQty;
     }
 
-    public void setrStockQty(Integer rStockQty) {
-        this.rStockQty = rStockQty;
+    public void setRentalStockQty(Integer rentalStockQty) {
+        this.rentalStockQty = rentalStockQty;
     }
 
-    public Integer getrRentedQty() {
-        return rRentedQty;
+    public Integer getRentalRentedQty() {
+        return rentalRentedQty;
     }
 
-    public void setrRentedQty(Integer rRentedQty) {
-        this.rRentedQty = rRentedQty;
+    public void setRentalRentedQty(Integer rentalRentedQty) {
+        this.rentalRentedQty = rentalRentedQty;
     }
 
-    public BigDecimal getrDesPrice() {
-        return rDesPrice;
+    public BigDecimal getRentalDesPrice() {
+        return rentalDesPrice;
     }
 
-    public void setrDesPrice(BigDecimal rDesPrice) {
-        this.rDesPrice = rDesPrice;
+    public void setRentalDesPrice(BigDecimal rentalDesPrice) {
+        this.rentalDesPrice = rentalDesPrice;
     }
 
     public Set<Rental> getRentals() {

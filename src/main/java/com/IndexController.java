@@ -1,15 +1,7 @@
 package com;
 
-import com.yu.rental.model.RentalServiceImpl;
-import com.yu.rentalcategory.model.RentalCategoryService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
-
-import java.time.LocalDateTime;
 
 //控制器方法：定義方法處理請求
 //Model表示模型，用來儲存數據。(最後放在HttpServletrequest作用域)
@@ -61,14 +53,6 @@ public class IndexController {
 //		return "backend/rental/listAllRental";
 //	}
 //
-//
-//    //因寫在方法上，故將此類別中的@GetMapping Method先加入model.addAttribute("...List",...Service.getAll());
-//    @ModelAttribute("rentalListData")  //select_page.html、listAllEmp.html使用
-//    protected List<Rental> referenceListData(Model model) {
-//        List<Rental> list = rentalSvc.getAll();
-//        return list;
-//    }
-//
 //    //因寫在方法上，故將此類別中的@GetMapping Method先加入model.addAttribute("...List",...Service.getAll());
 //    @ModelAttribute("rentalCategoryListData") //select_page.html 使用
 //    protected List<RentalCategory> referenceListData_RentalCat(Model model) {
@@ -76,7 +60,4 @@ public class IndexController {
 //        List<RentalCategory> list = rentalCategorySvc.getAll();
 //        return list;
 //    }
-//
-//
-
 }

@@ -1,4 +1,4 @@
-package com.yu.rental.model;
+package com.yu.rental.service;
 
 import com.yu.rental.dao.RentalRepository;
 import com.yu.rental.entity.Rental;
@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class RentalServiceImpl implements RentalService {
@@ -16,19 +17,24 @@ public class RentalServiceImpl implements RentalService {
 
 	//單筆查詢
 	@Override
-	public Rental findByNo(Integer rNo) {
-		return repository.findByrNo(rNo);	}
+	public Rental findByNo(Integer rentalNo) {
+		return repository.findByRentalNo(rentalNo);	}
 
 
 	//單筆查詢
 	@Override
-	public Rental getRentalName(String rName) {
-		return repository.findByrName(rName);	}
+	public Rental getRentalName(String rentalName) {
+		return repository.findByRentalName(rentalName);	}
 
 	//全部查詢
 	@Override
 	public List<Rental> findAll() {
 		return repository.findAll();
+	}
+
+	@Override
+	public List<Rental> getByCompositeQuery(Map<String, String[]> map) {
+		return null;
 	}
 
 	//	//新增 (PK為null，save方法插入數據)

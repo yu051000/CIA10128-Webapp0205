@@ -1,4 +1,4 @@
-package com.yu.rentalcategory.model;
+package com.yu.rentalcategory.service;
 
 import java.util.List;
 import java.util.Optional;

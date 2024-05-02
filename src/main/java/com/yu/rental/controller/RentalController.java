@@ -1,14 +1,16 @@
 package com.yu.rental.controller;
 
 import com.yu.rental.entity.Rental;
-import com.yu.rental.model.RentalService;
-import com.yu.rentalcategory.model.RentalCategoryService;
+import com.yu.rental.service.RentalService;
+import com.yu.rentalcategory.service.RentalCategoryService;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/backend/rental")
@@ -19,28 +21,50 @@ public class RentalController {
     @Autowired  // 自動裝配
     private RentalCategoryService rentalCategoryService;
 
+    //顯示select_page.html
+    @GetMapping("/selectPage") //在method層面上用作處理 http 的請求。
+    public String selectPage(ModelMap modelMap) {
+        return "backend/rental/select_page";
+    }
 
-
-    //顯示所有租借品
-    @GetMapping("/rentallist")
-    public String getRentalList(ModelMap modelMap) {
+    //顯示listAllRental.html
+    @GetMapping("/listAllRental")
+    public String listAllRental(ModelMap modelMap) {
         return "backend/rental/listAllRental";
     }
 
-    @ModelAttribute("rentalListData")
-    //referenceListData()：回傳一個包含參考資料的列表或映射，透過View渲染到使用者介面上。
+    /**
+     * 因@ModelAttribute寫在方法上，故將此類別中的@GetMapping Method先加入model.addAttribute("...List",...Service.getAll());
+     * referenceListData()：回傳一個包含參考資料的列表或映射，透過View渲染到使用者介面上。
+     */
+    //
+    @ModelAttribute("rentalListData") //select_page.html、listAllEmp.html使用
     protected List<Rental> referenceListData() {
         List<Rental> list = rentalService.findAll();
-        return list;
+        return list; //取得Rental列表
     }
+
+    //複合查詢
+    @PostMapping("/listRentalsByCompositeQuery")
+    //referenceListData()：回傳一個包含參考資料的列表或映射，透過View渲染到使用者介面上。
+    public String listRentalsByCompositeQuery(HttpServletRequest req, ModelMap modelMap) {
+
+        Map<String, String[]> map = req.getParameterMap(); //獲取參數映射
+        if(map != null){
+            List<Rental> rentalData = rentalService.getByCompositeQuery(map);
+            modelMap.addAttribute("rentalData", rentalData);
+        }
+        return "backend/rental/listAllRental";
+    }
+
 
 
     //顯示單筆租借品
     @GetMapping("/getOneRental")  //required = true：請求參數不可為null(預設)
-    public String getOneRental(@RequestParam(value = "rNo",required = true) Integer rNo, ModelMap model) {
+    public String getOneRental(@RequestParam(value = "rentalNo",required = true) Integer rentalNo, ModelMap model) {
         //處理表單數據
         //建立返回數據的對象
-        Rental rental = rentalService.findByNo(rNo);
+        Rental rental = rentalService.findByNo(rentalNo);
         model.addAttribute("rental", rental);
         return "backend/rental/listOneRental";
     }
@@ -97,10 +121,10 @@ public class RentalController {
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //    @PostMapping("getOne_For_Update") //接收Http Post請求，這種請求通常用於創建新資源或提交資料給伺服器。
 //    //@ResponseBody---> 設為@RestController的預設加入。接受前端傳遞的json格式參數
-//    public String getOne_For_Update(@RequestParam("rNo") String rNo, ModelMap model) {
+//    public String getOne_For_Update(@RequestParam("rentalNo") String rentalNo, ModelMap model) {
 //        /*************************** 1.接收請求參數 - 輸入格式的錯誤處理 ************************/
 //        /*************************** 2.開始查詢資料 *****************************************/
-//        Rental rental = rentalService.getOneRental(Integer.valueOf(rNo));
+//        Rental rental = rentalService.getOneRental(Integer.valueOf(rentalNo));
 //
 //        /*************************** 3.查詢完成,準備轉交(Send the Success view) **************/
 //        model.addAttribute("rental", rental);
@@ -115,14 +139,7 @@ public class RentalController {
 //        mv.setViewName("select_page"); //選擇呈現的網頁
 //        return mv;
 //    }
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//    @GetMapping("/rental/addRental") //接收Get請求，對應的URI由當前方法處理
-//    //@ResponseBody---> 設為@RestController的預設加入。接受前端傳遞的json格式參數
-//    public String addRental(Model model) {
-//        Rental rental = new Rental();
-//        model.addAttribute("rental", rental); //調用service，處理請求，獲取數據
-//        return "addRental";  //view (在addRental.html顯示數據)
-//    }
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -164,7 +181,7 @@ public class RentalController {
 //
 //        /*************************** 3.修改完成,準備轉交(Send the Success view) **************/
 //        model.addAttribute("success", "- (修改成功)");
-//        rental = rentalService.getOneRental(Integer.valueOf(rental.getrNo()));
+//        rental = rentalService.getOneRental(Integer.valueOf(rental.getrentalNo()));
 //        model.addAttribute("rental", rental);
 //        return "backend/rental/listOneRental"; // 修改成功後轉交listOneRental.html
 //    }
@@ -188,16 +205,6 @@ public class RentalController {
 //            result.addError(fieldError);
 //        }
 //        return result; //控制器方法返回值，響應給瀏覽器做展示
-//    }
-
-    //複合查詢
-//    @PostMapping("listRentals_ByCompositeQuery") //接收Http Post請求，這種請求通常用於創建新資源或提交資料給伺服器。
-    //@ResponseBody---> 設為@RestController的預設加入。接受前端傳遞的json格式參數
-//    public String listRentals_ByCompositeQuery(HttpServletRequest req, Model model) {
-//        Map<String, String[]> map = req.getParameterMap();
-//        List<Rental> list = rentalService.findAll(map);
-//        model.addAttribute("rentalListData", list); // for listAllRental.html 第85行用
-//        return "backend/rental/listAllRental";
 //    }
 
 }

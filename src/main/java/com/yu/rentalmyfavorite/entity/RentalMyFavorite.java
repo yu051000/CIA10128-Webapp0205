@@ -11,16 +11,16 @@ import java.sql.Timestamp;
 @Table(name = "rentalmyfavorite")  //此"永續類別"對應到的表格
 public class RentalMyFavorite implements java.io.Serializable {
 
-    // 直接宣告複合識別類別的屬性 (rNo與memNo是複合主鍵)
+    // 直接宣告複合識別類別的屬性 (rentalNo與memNo是複合主鍵)
     @EmbeddedId   //加上@EmbeddedId 標註，必須override此類別的hashcode()、equals()
     private CompositeDetail compositeKey;
 
-    @Column(name = "rfavtime", columnDefinition = "DATETIME")
-    private Timestamp rFavTime;
+    @Column(name = "rentalfavtime", columnDefinition = "DATETIME")
+    private Timestamp rentalFavTime;
 
     @ManyToOne
     @JsonManagedReference
-    @JoinColumn(name = "rno", referencedColumnName = "rno", insertable = false, updatable = false)
+    @JoinColumn(name = "rentalno", referencedColumnName = "rentalno", insertable = false, updatable = false)
     private Rental rental;
 
     @ManyToOne
@@ -36,12 +36,12 @@ public class RentalMyFavorite implements java.io.Serializable {
         this.compositeKey = compositeKey;
     }
 
-    public Timestamp getrFavTime() {
-        return rFavTime;
+    public Timestamp getRentalFavTime() {
+        return rentalFavTime;
     }
 
-    public void setrFavTime(Timestamp rFavTime) {
-        this.rFavTime = rFavTime;
+    public void setRentalFavTime(Timestamp rentalFavTime) {
+        this.rentalFavTime = rentalFavTime;
     }
 
     public Rental getRental() {
@@ -65,8 +65,8 @@ public class RentalMyFavorite implements java.io.Serializable {
     public static class CompositeDetail implements java.io.Serializable {
         private static final long serialVersionUID = 1L;
 
-        @Column(name = "rno")
-        private Integer rNo;
+        @Column(name = "rentalno")
+        private Integer rentalNo;
 
         @Column(name = "memno")
         private Integer memNo;
@@ -76,18 +76,18 @@ public class RentalMyFavorite implements java.io.Serializable {
             super();
         }
 
-        public CompositeDetail(Integer rNo, Integer memNo) {
+        public CompositeDetail(Integer rentalNo, Integer memNo) {
             super();
-            this.rNo = rNo;
+            this.rentalNo = rentalNo;
             this.memNo = memNo;
         }
 
-        public Integer getRNo() {
-            return rNo;
+        public Integer getRentalNo() {
+            return rentalNo;
         }
 
-        public void setRNo(Integer rNo) {
-            this.rNo = rNo;
+        public void setRentalNo(Integer rentalNo) {
+            this.rentalNo = rentalNo;
         }
 
         public Integer getMemNo() {
@@ -103,7 +103,7 @@ public class RentalMyFavorite implements java.io.Serializable {
         public int hashCode() {
             final int prime = 31;
             int result = 1;
-            result = prime * result + ((rNo == null) ? 0 : rNo.hashCode());
+            result = prime * result + ((rentalNo == null) ? 0 : rentalNo.hashCode());
             result = prime * result + ((memNo == null) ? 0 : memNo.hashCode());
             return result;
         }
@@ -115,7 +115,7 @@ public class RentalMyFavorite implements java.io.Serializable {
 
             if (obj != null && getClass() == obj.getClass()) {
                 CompositeDetail compositeKey = (CompositeDetail) obj;
-                if (memNo.equals(compositeKey.memNo) && rNo.equals(compositeKey.rNo)) {
+                if (memNo.equals(compositeKey.memNo) && rentalNo.equals(compositeKey.rentalNo)) {
                     return true;
                 }
             }

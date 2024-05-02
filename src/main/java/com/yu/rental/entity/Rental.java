@@ -22,60 +22,60 @@ public class Rental {
 
 
     @Id //標示為PK
-    @Column(name="rno")
+    @Column(name="rentalno")
     @NotNull(message="租借品編號: 請勿空白", groups = {UpdateRentalGroup.class})
     @Min(value = 5001, message = "租借品編號: 不能小於{value}", groups = {UpdateRentalGroup.class})
     @Max(value = 8000, message = "租借品編號: 不能小於{value}", groups = {UpdateRentalGroup.class})
-    private Integer rNo;
+    private Integer rentalNo;
 
 
     @ManyToOne
     @JsonManagedReference
-    @JoinColumn(name = "rcatno", referencedColumnName = "rcatno") //對應rental的rCatNo
+    @JoinColumn(name = "rentalcatno", referencedColumnName = "rentalcatno") //對應rental的rCatNo
     private RentalCategory rentalCategory;
 
 
-    @Column(name="rname", length=40)
+    @Column(name="rentalname", length=40)
     @NotEmpty(message="租借品名稱: 請勿空白", groups = {AddRentalGroup.class,UpdateRentalGroup.class})
     @Pattern(regexp = "^[(\u4e00-\u9fa5)(a-zA-Z0-9_)]{2,40}$",message = "只能是中、英文字母、數字和_ , 且長度必需在2到10之間",
             groups = {AddRentalGroup.class,UpdateRentalGroup.class})
-    private String rName;
+    private String rentalName;
 
 
-    @Column(name="rprice",columnDefinition="BigDecimal")
+    @Column(name="rentalprice",columnDefinition="BigDecimal")
     @NotNull(message="租借品單價: 請勿空白", groups = {AddRentalGroup.class,UpdateRentalGroup.class})
     @DecimalMin(value = "00000", message = "租借品單價: 不能小於{value}",
             groups = {AddRentalGroup.class,UpdateRentalGroup.class})
-    private BigDecimal rPrice;
+    private BigDecimal rentalPrice;
 
 
-    @Column(name="rsize")
+    @Column(name="rentalsize")
     @NotNull(message="尺寸: 請勿空白", groups = {AddRentalGroup.class,UpdateRentalGroup.class})
     @Min(value = 0, message = "尺寸: 不能小於{value}", groups = {AddRentalGroup.class,UpdateRentalGroup.class})
     @Max(value = 5, message = "尺寸: 不能小於{value}", groups = {AddRentalGroup.class,UpdateRentalGroup.class})
-    private Integer rSize;
+    private Integer rentalSize;
 
 
-    @Column(name="rcolor", length=10)
+    @Column(name="rentalcolor", length=10)
     @NotEmpty(message="顏色: 請勿空白", groups = {AddRentalGroup.class,UpdateRentalGroup.class})
     @Pattern(regexp = "^[(\u4e00-\u9fa5)(a-zA-Z0-9_)]{2,10}$", message = "顏色: 只能是中文, 且長度必需在2到10之間",
             groups = {AddRentalGroup.class,UpdateRentalGroup.class})
-    private String rColor;
+    private String rentalColor;
 
 
-    @Column(name="rinfo", length=1000)
+    @Column(name="rentalinfo", length=1000)
     @NotEmpty(message="租借品資訊: 請勿空白", groups = {AddRentalGroup.class,UpdateRentalGroup.class})
     @Pattern(regexp = "^[(\u4e00-\u9fa5)(a-zA-Z0-9_)]{2,1000}$",
             message = "租借品資訊: 只能是中、英文字母、數字和_ , 且長度必需在2到10之間",
             groups = {AddRentalGroup.class,UpdateRentalGroup.class})
-    private String rInfo;
+    private String rentalInfo;
 
 
-    @Column(name="rstat",columnDefinition = "TINYINT")
+    @Column(name="rentalstat",columnDefinition = "TINYINT")
     @NotNull(message="租借品狀態: 請勿空白", groups = {AddRentalGroup.class,UpdateRentalGroup.class})
     @Min(value = 0, message = "租借品狀態: 不能小於{value}", groups = {AddRentalGroup.class,UpdateRentalGroup.class})
     @Max(value = 5, message = "租借品狀態: 不能小於{value}", groups = {AddRentalGroup.class,UpdateRentalGroup.class})
-    private Byte rStat;
+    private Byte rentalStat;
 
 
     @JsonBackReference
@@ -95,29 +95,28 @@ public class Rental {
     public Rental() {
     }
 
-    public Rental(Integer rNo, String rName,BigDecimal rPrice, Integer rSize, String rColor, String rInfo, Byte rStat,
+    public Rental(Integer rentalNo, String rentalName,BigDecimal rentalPrice, Integer rentalSize, String rentalColor, String rentalInfo, Byte rentalStat,
                   RentalCategory rentalCategory, Set<RentalOrderDetails> rentalOrderDetails,
                   Set<RentalMyFavorite> rentalMyFavorites, Set<RentalPic> rentalPics) {
-        this.rNo = rNo;
-        this.rName = rName;
-        this.rPrice = rPrice;
-        this.rSize = rSize;
-        this.rColor = rColor;
-        this.rInfo = rInfo;
-        this.rStat = rStat;
+        this.rentalNo = rentalNo;
+        this.rentalName = rentalName;
+        this.rentalPrice = rentalPrice;
+        this.rentalSize = rentalSize;
+        this.rentalColor = rentalColor;
+        this.rentalInfo = rentalInfo;
+        this.rentalStat = rentalStat;
         this.rentalCategory = rentalCategory;
         this.rentalOrderDetails = rentalOrderDetails;
         this.rentalMyFavorites = rentalMyFavorites;
         this.rentalPics = rentalPics;
     }
 
-
-    public Integer getrNo() {
-        return rNo;
+    public Integer getRentalNo() {
+        return rentalNo;
     }
 
-    public void setrNo(Integer rNo) {
-        this.rNo = rNo;
+    public void setRentalNo(Integer rentalNo) {
+        this.rentalNo = rentalNo;
     }
 
     public RentalCategory getRentalCategory() {
@@ -128,52 +127,52 @@ public class Rental {
         this.rentalCategory = rentalCategory;
     }
 
-    public String getrName() {
-        return rName;
+    public String getRentalName() {
+        return rentalName;
     }
 
-    public void setrName(String rName) {
-        this.rName = rName;
+    public void setRentalName(String rentalName) {
+        this.rentalName = rentalName;
     }
 
-    public BigDecimal getrPrice() {
-        return rPrice;
+    public BigDecimal getRentalPrice() {
+        return rentalPrice;
     }
 
-    public void setrPrice(BigDecimal rPrice) {
-        this.rPrice = rPrice;
+    public void setRentalPrice(BigDecimal rentalPrice) {
+        this.rentalPrice = rentalPrice;
     }
 
-    public Integer getrSize() {
-        return rSize;
+    public Integer getRentalSize() {
+        return rentalSize;
     }
 
-    public void setrSize(Integer rSize) {
-        this.rSize = rSize;
+    public void setRentalSize(Integer rentalSize) {
+        this.rentalSize = rentalSize;
     }
 
-    public String getrColor() {
-        return rColor;
+    public String getRentalColor() {
+        return rentalColor;
     }
 
-    public void setrColor(String rColor) {
-        this.rColor = rColor;
+    public void setRentalColor(String rentalColor) {
+        this.rentalColor = rentalColor;
     }
 
-    public String getrInfo() {
-        return rInfo;
+    public String getRentalInfo() {
+        return rentalInfo;
     }
 
-    public void setrInfo(String rInfo) {
-        this.rInfo = rInfo;
+    public void setRentalInfo(String rentalInfo) {
+        this.rentalInfo = rentalInfo;
     }
 
-    public Byte getrStat() {
-        return rStat;
+    public Byte getRentalStat() {
+        return rentalStat;
     }
 
-    public void setrStat(Byte rStat) {
-        this.rStat = rStat;
+    public void setRentalStat(Byte rentalStat) {
+        this.rentalStat = rentalStat;
     }
 
     public Set<RentalOrderDetails> getRentalOrderDetails() {
