@@ -6,7 +6,11 @@
     <title>Document</title>
     <!-- Custom styles for this page -->
     <link th:href="@{/backend/vendor/datatables/dataTables.bootstrap4.min.css}" rel="stylesheet" />
-
+    <style>
+        *{
+            font-size: 12px; /* 調整字體大小 */
+        }
+    </style>
 </head>
 <body id="page-top">
 <!-- Page Wrapper -->
@@ -28,7 +32,7 @@
                 <!-- DataTales Example -->
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary">租借品資料</h6>
+                        <h6 class="m-0 font-weight-bold text-primary">所有租借品資料</h6>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -43,13 +47,13 @@
                                     <th>租借品資訊</th>
                                     <th>租借品狀態</th>
                                     <th>租借品類別編號</th>
+                                    <th>修改</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                     <th:block th:each="rental : ${rentalListData}"> <!--th:block 用來包裝使用-->
                                         <tr>
                                             <td th:text="${rental.rentalNo}"></td>
-                                            <td th:text="${rental.RentalCategory.rentalCatNo}"></td>
                                             <td th:text="${rental.rentalName}"></td>
                                             <td th:text="${rental.rentalPrice}"></td>
                                             <td>
@@ -70,13 +74,13 @@
                                                 <span th:if="${rental.rentalStat == 4}" th:text="清潔整理中"></span>
                                                 <span th:if="${rental.rentalStat == 5}" th:text="下架"></span>
                                             </td>
-    <!--                                        <td th:text="${rental.RentalCategory.rentalCatNo} + '-[' + ${rental.RentalCategory.rCatName} + ']'"></td>-->
+                                            <td th:text="${rental.rentalCategory.rentalCatNo} + '-[' + ${rental.rentalCategory.rentalCatName} + ']'"></td>
                                             <td>
-                                                <form method="post" th:action="@{updateRental}">
+                                                <!-- 觸發submit，跳轉th:action指定頁面 -->
+                                                <form method="post" th:action="@{getOne_For_Update}">
                                                     <button type="submit">
                                                         <i class="fa-solid fa-pen-to-square"></i>
-                                                        <input type="hidden" name="rentalCatNo" value="${rental.rentalCatNo}">
-                                                        <input type="hidden" name="action" value="getOne_For_Update">
+                                                        <input type="hidden" name="rentalNo" value="${rental.rentalNo}">
                                                     </button>
                                                 </form>
                                             </td>

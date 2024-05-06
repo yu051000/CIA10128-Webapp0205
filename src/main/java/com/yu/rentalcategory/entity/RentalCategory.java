@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.yu.rental.entity.Rental;
 
 import javax.persistence.*;
+import javax.validation.constraints.*;
 import java.math.BigDecimal;
 import java.util.Set;
 
@@ -11,24 +12,58 @@ import java.util.Set;
 @Table(name = "rentalcategory")  //此"永續類別"對應到的表格
 public class RentalCategory {
 
+    // 分組驗證 (ex. Add時是以自動分配的數字，但Update也許對應不到。固可使用此方法)
+    public static interface AddRentalCatGroup{};
+    public static interface UpdateRentalCatGroup{};
+
     @Id //標示此為Pk
     @Column(name="rentalcatno")
+    @NotNull(message="租借品類別編號: 請勿空白", groups = {RentalCategory.UpdateRentalCatGroup.class})
+    @Min(value = 1, message = "租借品類別編號: 不能小於{value}", groups = {RentalCategory.UpdateRentalCatGroup.class})
     private Integer rentalCatNo;
 
+
     @Column(name="rentalcatname", length=40)
+    @NotEmpty(message="租借品類別名稱: 請勿空白", groups = {RentalCategory.AddRentalCatGroup.class, RentalCategory.UpdateRentalCatGroup.class})
+    @Pattern(regexp = "^[(\u4e00-\u9fa5)(a-zA-Z0-9_)]{2,40}$",message = "只能是中、英文字母、數字和_ , 且長度必需在2到10之間",
+            groups = {RentalCategory.AddRentalCatGroup.class, RentalCategory.UpdateRentalCatGroup.class})
     private String rentalCatName;
 
+
     @Column(name="rentalstockqty")
+    @NotNull(message="租借品庫存數量: 請勿空白", groups = {RentalCategory.AddRentalCatGroup.class, RentalCategory.UpdateRentalCatGroup.class})
+    @Min(value = 0, message = "租借品庫存數量: 不能小於{value}", groups = {RentalCategory.AddRentalCatGroup.class, RentalCategory.UpdateRentalCatGroup.class})
     private Integer rentalStockQty;
 
+
     @Column(name="rentalrentedqty")
+    @NotNull(message="租借品已租借數量: 請勿空白", groups = {RentalCategory.AddRentalCatGroup.class, RentalCategory.UpdateRentalCatGroup.class})
+    @Min(value = 0, message = "租借品已租借數量: 不能小於{value}", groups = {RentalCategory.AddRentalCatGroup.class, RentalCategory.UpdateRentalCatGroup.class})
     private Integer rentalRentedQty;
 
+    
     @Column(name="rentaldesprice",columnDefinition="BigDecimal")
+    @NotNull(message="押金: 請勿空白", groups = {RentalCategory.AddRentalCatGroup.class, RentalCategory.UpdateRentalCatGroup.class})
+    @DecimalMin(value = "00000", message = "租借品單價: 不能小於{value}",
+            groups = {RentalCategory.AddRentalCatGroup.class, RentalCategory.UpdateRentalCatGroup.class})
     private BigDecimal rentalDesPrice;
+    
+    
     @JsonBackReference
     @OneToMany(mappedBy = "rentalCategory", cascade = CascadeType.ALL) //CascadeType.ALL把對應到的相關資料刪除
     private Set<Rental> rentals;
+
+    public RentalCategory() {
+    }
+
+    public RentalCategory(Integer rentalCatNo, String rentalCatName, Integer rentalStockQty, Integer rentalRentedQty, BigDecimal rentalDesPrice, Set<Rental> rentals) {
+        this.rentalCatNo = rentalCatNo;
+        this.rentalCatName = rentalCatName;
+        this.rentalStockQty = rentalStockQty;
+        this.rentalRentedQty = rentalRentedQty;
+        this.rentalDesPrice = rentalDesPrice;
+        this.rentals = rentals;
+    }
 
     public Integer getRentalCatNo() {
         return rentalCatNo;

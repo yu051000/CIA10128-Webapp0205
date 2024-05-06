@@ -25,7 +25,7 @@ public class Rental {
     @Column(name="rentalno")
     @NotNull(message="租借品編號: 請勿空白", groups = {UpdateRentalGroup.class})
     @Min(value = 5001, message = "租借品編號: 不能小於{value}", groups = {UpdateRentalGroup.class})
-    @Max(value = 8000, message = "租借品編號: 不能小於{value}", groups = {UpdateRentalGroup.class})
+    @Max(value = 8000, message = "租借品編號: 不能大於{value}", groups = {UpdateRentalGroup.class})
     private Integer rentalNo;
 
 
